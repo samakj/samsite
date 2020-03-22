@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 
 import { loadStore } from '@samsite/store';
 import '@samsite/components/styles/default.scss';
+import { Header } from '@samsite/components/header';
 
 export interface AppPropsType {
     preloadedState: object;
@@ -20,6 +21,7 @@ export const App: React.FunctionComponent<AppPropsType> = ({
 
     return (
         <Provider store={store}>
+            <Header />
             {children}
         </Provider>
     );

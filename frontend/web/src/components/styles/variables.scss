@@ -1,0 +1,17 @@
+$one-px: 0.0625rem;
+
+// Media Type Size Bands
+
+$desktop-last-pixel: 120rem;
+$desktop-first-pixel: 90rem;
+$laptop-last-pixel: $desktop-first-pixel - $one-px;
+$laptop-first-pixel: 60rem;
+$tablet-last-pixel: $laptop-first-pixel - $one-px;
+$tablet-first-pixel: 35rem;
+$mobile-last-pixel: $tablet-first-pixel - $one-px;
+$mobile-first-pixel: 20rem;
+
+// Max page width
+
+$max-page-width: 80rem;
+$min-padding: 1rem;
