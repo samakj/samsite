@@ -1,0 +1,13 @@
+# venv files
+venv/
+
+# Byte-compiled / optimized / DLL files
+.idea/
+__pycache__/
+*.py[cod]
+
+# React/Frontend Stuff
+frontend/site/public/
+frontend/site/node_modules/
+frontend/site/.env
+*.DS_store
