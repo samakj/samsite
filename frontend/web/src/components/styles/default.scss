@@ -1,0 +1,19 @@
+@import 'colours';
+@import 'fonts';
+
+* {
+    box-sizing: border-box;
+    font-family: 'Barlow', sans-serif;
+}
+
+body {
+    margin: 0;
+
+    background-color: $black;
+    color: $white;
+}
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
