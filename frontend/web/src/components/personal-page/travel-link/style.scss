@@ -1,0 +1,61 @@
+@import '../../styles/colours';
+@import '../../styles/properties';
+@import '../../styles/variables';
+
+.travel-link {
+    position: relative;
+    width: 100%;
+    height: 15rem;
+    margin-top: 4rem;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    &:hover:before {
+        background-color: transparentize($white, 0.9);
+    }
+
+    &:before {
+        content: '';
+
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        transition: background-color 300ms;
+    }
+
+    .world-map-image-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        background-color: $off-black;
+
+        z-index: -1;
+
+        img.world-map-image {
+            object-fit: cover;
+        }
+    }
+
+    .link-text {
+        margin-right: 1rem;
+
+        font-size: 1.25rem;
+        font-weight: $bold;
+        text-transform: uppercase;
+        color: $white;
+    }
+
+    .link-image-container {
+        height: 1rem;
+        width: 0.75rem;
+        margin-right: 5rem;
+    }
+}
