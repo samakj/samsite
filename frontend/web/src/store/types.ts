@@ -22,6 +22,8 @@ export interface ActionObjectType<PayloadValueType> {
 
 export type StoreKeyType = string;
 
-export type StoreObjectType<StoreValueType> = StringKeyedObjectType<KeyedObjectType<StoreValueType>>;
+export type StateObjectType<StoreValueType> = KeyedObjectType<StoreValueType>;
+
+export type StoreObjectType<StoreValueType> = StringKeyedObjectType<StateObjectType<StoreValueType>>;
 
 export type DispatchFunctionType<PayloadValueType> = (payload?: KeyedObjectType<PayloadValueType>) => void;
