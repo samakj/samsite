@@ -11,3 +11,23 @@ export interface GitCardPropsType {
     onFetchGitUserRepos: (username: string) => void;
     onFetchGitRepoCommits: (owner: string, repo: string, author?: string) => void;
 }
+
+export interface GitProfilePicturePropsType {
+    user: GitUserStateType;
+}
+
+export interface GitUsernamePropsType {
+    user: GitUserStateType;
+}
+
+export interface GitCommitRepoPropsType {
+    commit: GitCommitStateType;
+}
+
+export interface GitCommitTitlePropsType {
+    commit: GitCommitStateType;
+}
+
+export interface GitCommitDescriptionPropsType {
+    commit: GitCommitStateType;
+}
