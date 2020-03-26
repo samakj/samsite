@@ -37,7 +37,7 @@ module.exports = [
             filename: 'js/[name].bundle.js',
             publicPath: '/static/',
         },
-        plugins: [plugins.MiniExtractCss, plugins.CopyStatic],
+        plugins: [plugins.MiniExtractCss, plugins.CopyStatic, plugins.DotEnv],
         module: {
             rules: [rules.ts, rules.js, rules.scss],
         },
