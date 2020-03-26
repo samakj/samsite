@@ -1,15 +1,16 @@
-$one-px: 0.0625rem;
+$root-font-size: 16px;
+$one-px: 0.0125rem;
 
 // Media Type Size Bands
 
-$desktop-last-pixel: 120rem;
-$desktop-first-pixel: 90rem;
-$laptop-last-pixel: $desktop-first-pixel - $one-px;
-$laptop-first-pixel: 60rem;
-$tablet-last-pixel: $laptop-first-pixel - $one-px;
-$tablet-first-pixel: 35rem;
-$mobile-last-pixel: $tablet-first-pixel - $one-px;
-$mobile-first-pixel: 20rem;
+$desktop-last-pixel: 1920px;
+$desktop-first-pixel: 1440px;
+$laptop-last-pixel: $desktop-first-pixel - 1px;
+$laptop-first-pixel: 960px;
+$tablet-last-pixel: $laptop-first-pixel - 1px;
+$tablet-first-pixel: 560px;
+$mobile-last-pixel: $tablet-first-pixel - 1px;
+$mobile-first-pixel: 320px;
 
 // Max page width
 
