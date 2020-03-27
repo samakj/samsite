@@ -76,7 +76,7 @@ const DumbInstagramCard: React.FunctionComponent<InstagramCardPropsType> = ({
     onFetchInstagramMe,
     onFetchInstagramMedia,
 }) => {
-    useEffect(() => { onFetchInstagramMe(); });
+    useEffect(() => { onFetchInstagramMe(); }, []);
     useEffect(
         () => {
             user && Object.values(user.media).forEach((id: string): void => onFetchInstagramMedia(id));
