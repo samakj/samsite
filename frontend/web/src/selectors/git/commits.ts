@@ -5,8 +5,7 @@ import { fetchGitCommitsStoreHandler } from '@samsite/store/handlers/git/commits
 export const getGitCommitSelector = (
     state: StoreObjectType<GitCommitStateType>,
     sha: GitCommitStateType['sha'],
-): GitCommitStateType =>
-    sha && fetchGitCommitsStoreHandler.storeMaps.getKeyValue(state, sha);
+): GitCommitStateType => sha && fetchGitCommitsStoreHandler.storeMaps.getKeyValue(state, sha);
 
 export const getGitCommitsSelector = (
     state: StoreObjectType<GitCommitStateType>,
@@ -16,5 +15,4 @@ export const getGitCommitsSelector = (
 
 export const getAllGitCommitsSelector = (
     state: StoreObjectType<GitCommitStateType>,
-): StateObjectType<GitCommitStateType> =>
-    fetchGitCommitsStoreHandler.storeMaps.getValue(state);
+): StateObjectType<GitCommitStateType> => fetchGitCommitsStoreHandler.storeMaps.getValue(state);

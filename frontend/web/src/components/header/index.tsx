@@ -39,9 +39,9 @@ const DumbHeader: React.FunctionComponent<HeaderPropsType> = ({ onNavigate }) =>
                     className="mobile-nav-icon"
                     src="/static/svg/menu.svg"
                     alt="Open Menu"
-                    onClick={ toggleMobileNav }
+                    onClick={toggleMobileNav}
                 />
-                <nav className={ `mobile-navigation -${ mobileNavOpen ? 'open' : 'closed' }` }>
+                <nav className={`mobile-navigation -${mobileNavOpen ? 'open' : 'closed'}`}>
                     <ul className="nav-list">
                         <li className="nav-item" onClick={navigatePersonal}>
                             Personal

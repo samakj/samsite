@@ -1,3 +1,1 @@
-export interface QuickInfoPropsType {
-
-}
+export interface QuickInfoPropsType {}

@@ -1,5 +1,8 @@
 import { apiRoot } from '@samsite/fetchers/instagram/config';
-import { defaultErrorHandler, generateFetchRequest } from '@samsite/factories/fetch/fetchRequestFactory';
+import {
+    defaultErrorHandler,
+    generateFetchRequest,
+} from '@samsite/factories/fetch/fetchRequestFactory';
 import { FetchRequestType } from '@samsite/factories/fetch/types';
 import { StateObjectType } from '@samsite/store/types';
 import { InstagramUserResponseType } from '@samsite/fetchers/instagram/types';
@@ -15,23 +18,20 @@ export const fetchInstagramUserResponseHandler = <ResponseObjectType, HandledRes
         accountType: response.account_type,
         mediaCount: response.media_count,
         media: Object.values(response.media.data).reduce(
-            (
-                acc: {[id: string]: string},
-                value: {id: string}
-            ): {[id: string]: string} => {
+            (acc: { [id: string]: string }, value: { id: string }): { [id: string]: string } => {
                 acc[value.id] = value.id;
-                return acc
+                return acc;
             },
             {},
         ),
-    }
+    },
 });
 
 export const fetchInstagramMe = (): FetchRequestType =>
     generateFetchRequest<InstagramUserResponseType, InstagramUserStateType>(
         `${apiRoot}/me` +
-        `?fields=username,media,account_type,media_count` +
-        `&access_token=${process.env.REACT_APP_INSTAGRAM_ACCESS_TOKEN}`,
+            `?fields=username,media,account_type,media_count` +
+            `&access_token=${process.env.REACT_APP_INSTAGRAM_ACCESS_TOKEN}`,
         fetchInstagramUserStoreHandler.dispatchers,
         fetchInstagramUserResponseHandler,
         defaultErrorHandler,

@@ -1,5 +1,8 @@
 import { StateObjectType } from '@samsite/store/types';
-import { InstagramMediaStateType, InstagramUserStateType } from '@samsite/store/handlers/instagram/types';
+import {
+    InstagramMediaStateType,
+    InstagramUserStateType,
+} from '@samsite/store/handlers/instagram/types';
 
 export interface InstagramCardPropsType {
     username: string;

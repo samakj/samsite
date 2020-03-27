@@ -1,18 +1,18 @@
 export interface InstagramUserResponseType {
-    username: string,
+    username: string;
     media: {
-        data: {id: string}[];
+        data: { id: string }[];
         paging: {
             cursors: {
                 before: string;
                 after: string;
-            },
+            };
             next: string;
-        }
-    },
-    account_type: string,
-    media_count: number,
-    id: string,
+        };
+    };
+    account_type: string;
+    media_count: number;
+    id: string;
 }
 
 export interface InstagramMediaResponseType {

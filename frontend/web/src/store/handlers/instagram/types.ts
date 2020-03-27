@@ -3,7 +3,7 @@ export interface InstagramUserStateType {
     username: string;
     accountType: string;
     mediaCount: number;
-    media: {[id: string]: string};
+    media: { [id: string]: string };
 }
 
 export interface InstagramMediaStateType {

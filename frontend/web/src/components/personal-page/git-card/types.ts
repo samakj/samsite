@@ -1,4 +1,8 @@
-import { GitCommitStateType, GitRepoStateType, GitUserStateType } from '@samsite/store/handlers/git/types';
+import {
+    GitCommitStateType,
+    GitRepoStateType,
+    GitUserStateType,
+} from '@samsite/store/handlers/git/types';
 import { StateObjectType } from '@samsite/store/types';
 
 export interface GitCardPropsType {

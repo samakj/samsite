@@ -27,7 +27,9 @@ export const generateFetchStoreHandler = <StateValueType>(
         actionTypes,
         fetchActionMethods,
     );
-    const reducer: Reducer<StateObjectType<StateValueType>> = generateUpdateReducer(actionTypes.SUCCESS);
+    const reducer: Reducer<StateObjectType<StateValueType>> = generateUpdateReducer(
+        actionTypes.SUCCESS,
+    );
     const dispatchers: FetchDispatcherObjectType<StateValueType> = generateDispatchers(actions);
     const storeMaps: StoreMapObjectType<StateValueType> = generateStoreMaps(storeKey);
 

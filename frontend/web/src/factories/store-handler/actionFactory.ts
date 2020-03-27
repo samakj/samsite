@@ -21,7 +21,10 @@ export const generateActionsObject = <PayloadValueType>(
     actionGenerator?: ActionGeneratorType<PayloadValueType>,
 ): ActionObjectType<PayloadValueType> =>
     Object.keys(actionMethods).reduce(
-        (acc: ActionObjectType<PayloadValueType>, actionMethod: string): ActionObjectType<PayloadValueType> => {
+        (
+            acc: ActionObjectType<PayloadValueType>,
+            actionMethod: string,
+        ): ActionObjectType<PayloadValueType> => {
             acc[actionMethod] = (actionGenerator || defaultActionGenerator)(
                 actionKeys[actionMethod],
             );

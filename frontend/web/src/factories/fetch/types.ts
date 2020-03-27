@@ -2,15 +2,17 @@ import { KeyedObjectType } from '@samsite/types/generic-object-types';
 import {
     ActionMethodsType,
     ActionObjectType,
-    ActionType, ActionTypeObjectType, ActionTypeType,
+    ActionType,
+    ActionTypeObjectType,
+    ActionTypeType,
     DispatchFunctionType,
-    StoreKeyType
+    StoreKeyType,
 } from '@samsite/store/types';
 import { Dispatch, Reducer } from 'redux';
 import {
     DispatcherObjectType,
     StoreHandlerObjectType,
-    StoreMapObjectType
+    StoreMapObjectType,
 } from '@samsite/factories/store-handler/types';
 
 export interface RequestHistoryTimingsType {
@@ -36,10 +38,15 @@ export interface FetchActionType<PayloadValueType> extends ActionType<PayloadVal
 }
 
 export type FetchActionGeneratorType<PayloadValueType> = (
-        type: ActionTypeType,
-) => (payload?: KeyedObjectType<PayloadValueType>, url?: string, error?: Error) => FetchActionType<PayloadValueType>
+    type: ActionTypeType,
+) => (
+    payload?: KeyedObjectType<PayloadValueType>,
+    url?: string,
+    error?: Error,
+) => FetchActionType<PayloadValueType>;
 
-export interface FetchActionObjectType<PayloadValueType> extends ActionObjectType<PayloadValueType> {
+export interface FetchActionObjectType<PayloadValueType>
+    extends ActionObjectType<PayloadValueType> {
     [status: string]: (
         payload?: KeyedObjectType<PayloadValueType>,
         url?: string,
@@ -71,9 +78,9 @@ export interface FetchStoreHandlerObjectType<StoreValueType> {
 }
 
 export type ResponseHandlerType<ResponseObjectType, HandledResponseType> = (
-    response: ResponseObjectType
-) => HandledResponseType
+    response: ResponseObjectType,
+) => HandledResponseType;
 
-export type ErrorHandlerType = (response: Response) => Response
+export type ErrorHandlerType = (response: Response) => Response;
 
-export type FetchRequestType = (dispatch: Dispatch) => Promise<void>
+export type FetchRequestType = (dispatch: Dispatch) => Promise<void>;

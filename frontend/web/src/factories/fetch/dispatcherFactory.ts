@@ -1,6 +1,7 @@
 import { KeyedObjectType } from '@samsite/types/generic-object-types';
 import {
-    FetchActionObjectType, FetchActionType,
+    FetchActionObjectType,
+    FetchActionType,
     FetchDispatcherObjectType,
     FetchDispatchFunctionType,
 } from '@samsite/factories/fetch/types';

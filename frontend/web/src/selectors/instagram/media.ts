@@ -1,5 +1,8 @@
 import { StateObjectType, StoreObjectType } from '@samsite/store/types';
-import { InstagramMediaStateType, InstagramUserStateType } from '@samsite/store/handlers/instagram/types';
+import {
+    InstagramMediaStateType,
+    InstagramUserStateType,
+} from '@samsite/store/handlers/instagram/types';
 import { fetchInstagramMediaStoreHandler } from '@samsite/store/handlers/instagram/media';
 
 export const getInstagramMediaSelector = (
@@ -23,22 +26,19 @@ export const getInstagramUserMediasSelector = (
 
         if (allMedia) {
             return Object.values(allMedia).reduce(
-                (
-                    acc: StateObjectType<InstagramMediaStateType>,
-                    media: InstagramMediaStateType,
-                ) => {
+                (acc: StateObjectType<InstagramMediaStateType>, media: InstagramMediaStateType) => {
                     if (media.username === username) {
-                        acc[media.id] = media
+                        acc[media.id] = media;
                     }
 
-                    return acc
+                    return acc;
                 },
                 {},
-            )
+            );
         }
     }
 
-    return null
+    return null;
 };
 
 export const getAllInstagramMediasSelector = (

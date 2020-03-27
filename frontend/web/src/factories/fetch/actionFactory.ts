@@ -5,7 +5,11 @@ import {
     ActionMethodsType,
 } from '@samsite/store/types';
 import { KeyedObjectType } from '@samsite/types/generic-object-types';
-import { FetchActionGeneratorType, FetchActionObjectType, FetchActionType } from '@samsite/factories/fetch/types';
+import {
+    FetchActionGeneratorType,
+    FetchActionObjectType,
+    FetchActionType,
+} from '@samsite/factories/fetch/types';
 
 const defaultFetchActionGenerator = <PayloadValueType>(type: ActionTypeType) => (
     payload?: KeyedObjectType<any>,

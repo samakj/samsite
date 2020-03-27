@@ -141,25 +141,25 @@ export interface GitRepoCommitResponseType {
             name: string;
             email: string;
             date: string;
-        },
+        };
         committer: {
             name: string;
             email: string;
             date: string;
-        },
+        };
         message: string;
         tree: {
-            'url': string;
-            'sha': string;
-        },
+            url: string;
+            sha: string;
+        };
         comment_count: number;
         verification: {
             verified: boolean;
             reason: string;
             signature: string;
             payload: string;
-        }
-    },
+        };
+    };
     author: GitSummarisedUserType;
     committer: GitSummarisedUserType;
     parents: {

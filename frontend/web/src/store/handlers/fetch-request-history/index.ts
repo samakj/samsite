@@ -1,7 +1,11 @@
 import { fetchRequestHistoryStoreKey } from '@samsite/store/keys';
 import { ActionTypeType, StateObjectType } from '@samsite/store/types';
 import { fetchActionMethods } from '@samsite/factories/fetch/constants';
-import { FetchActionType, RequestHistoryTimingsType, RequestHistoryType } from '@samsite/factories/fetch/types';
+import {
+    FetchActionType,
+    RequestHistoryTimingsType,
+    RequestHistoryType,
+} from '@samsite/factories/fetch/types';
 
 const getFetchMethod = (actionType: ActionTypeType): string | null => {
     for (const method in fetchActionMethods) {

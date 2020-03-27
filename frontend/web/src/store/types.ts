@@ -24,6 +24,10 @@ export type StoreKeyType = string;
 
 export type StateObjectType<StoreValueType> = KeyedObjectType<StoreValueType>;
 
-export type StoreObjectType<StoreValueType> = StringKeyedObjectType<StateObjectType<StoreValueType>>;
+export type StoreObjectType<StoreValueType> = StringKeyedObjectType<
+    StateObjectType<StoreValueType>
+>;
 
-export type DispatchFunctionType<PayloadValueType> = (payload?: KeyedObjectType<PayloadValueType>) => void;
+export type DispatchFunctionType<PayloadValueType> = (
+    payload?: KeyedObjectType<PayloadValueType>,
+) => void;

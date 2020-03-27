@@ -26,7 +26,7 @@ export const QuickInfo: React.FunctionComponent<QuickInfoPropsType> = ({}) => {
                     </div>
                     <div className="info">
                         <div className="title">Age</div>
-                        <div className="value">{ liveAge() }s</div>
+                        <div className="value">{liveAge()}s</div>
                     </div>
                     <div className="info">
                         <div className="title">Travel</div>
@@ -48,7 +48,7 @@ export const QuickInfo: React.FunctionComponent<QuickInfoPropsType> = ({}) => {
                         />
                         <span className="link-text">CV</span>
                     </a>
-                    <div className="link" onClick={ copyEmail }>
+                    <div className="link" onClick={copyEmail}>
                         <AsyncImage
                             srcProgression={['/static/svg/copy.svg']}
                             containerClass="link-image-container"

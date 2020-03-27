@@ -1,8 +1,9 @@
 import {
     ErrorHandlerType,
-    FetchDispatcherObjectType, FetchRequestType,
+    FetchDispatcherObjectType,
+    FetchRequestType,
     RequestHistoryStateType,
-    ResponseHandlerType
+    ResponseHandlerType,
 } from '@samsite/factories/fetch/types';
 import { KeyedObjectType } from '@samsite/types/generic-object-types';
 import { FetchError, HTTPError } from '@samsite/factories/fetch/errors';
@@ -23,14 +24,17 @@ export const defaultErrorHandler = (response: Response): Response => {
 };
 
 export const defaultResponseHandler = <ResponseObjectType, HandledResponseType>(
-    response: ResponseObjectType
-// @ts-ignore: Default handler assumes ResponseObjectType = HandledResponseType
+    response: ResponseObjectType,
+    // @ts-ignore: Default handler assumes ResponseObjectType = HandledResponseType
 ): HandledResponseType => response;
 
 export const generateFetchRequest = <ResponseObjectType, PayloadValueType>(
     url: string,
     dispatchers: FetchDispatcherObjectType<PayloadValueType>,
-    responseHandler: ResponseHandlerType<ResponseObjectType, KeyedObjectType<PayloadValueType>> = defaultResponseHandler,
+    responseHandler: ResponseHandlerType<
+        ResponseObjectType,
+        KeyedObjectType<PayloadValueType>
+    > = defaultResponseHandler,
     errorHandler: ErrorHandlerType = defaultErrorHandler,
 ): FetchRequestType => (dispatch: Dispatch): Promise<void> => {
     dispatchers.PENDING(dispatch)(null, url);

@@ -11,8 +11,12 @@ export const AsyncImage: React.FunctionComponent<AsyncImagePropsType> = ({
     srcProgression,
 }) => {
     return (
-        <div className={ `async-image-container ${containerClass}` }>
-            <img src={ proressiveImageLoad(srcProgression) } alt={ alt } className={ `async-image ${ imageClass }` }/>
+        <div className={`async-image-container ${containerClass}`}>
+            <img
+                src={proressiveImageLoad(srcProgression)}
+                alt={alt}
+                className={`async-image ${imageClass}`}
+            />
         </div>
     );
 };

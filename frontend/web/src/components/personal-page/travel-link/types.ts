@@ -1,3 +1,1 @@
-export interface TravelLinkPropsType {
-
-}
+export interface TravelLinkPropsType {}

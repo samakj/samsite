@@ -5,8 +5,7 @@ import { fetchGitReposStoreHandler } from '@samsite/store/handlers/git/repos';
 export const getGitRepoSelector = (
     state: StoreObjectType<GitRepoStateType>,
     id: GitRepoStateType['id'],
-): GitRepoStateType =>
-    id && fetchGitReposStoreHandler.storeMaps.getKeyValue(state, id);
+): GitRepoStateType => id && fetchGitReposStoreHandler.storeMaps.getKeyValue(state, id);
 
 export const getGitReposSelector = (
     state: StoreObjectType<GitRepoStateType>,
@@ -17,31 +16,27 @@ export const getGitReposSelector = (
 export const getGitUserReposSelector = (
     state: StoreObjectType<GitRepoStateType>,
     username: GitUserStateType['username'],
-): StateObjectType<GitRepoStateType> =>{
+): StateObjectType<GitRepoStateType> => {
     if (username) {
         const allMedia = fetchGitReposStoreHandler.storeMaps.getValue(state);
 
         if (allMedia) {
             return Object.values(allMedia).reduce(
-                (
-                    acc: StateObjectType<GitRepoStateType>,
-                    repo: GitRepoStateType,
-                ) => {
+                (acc: StateObjectType<GitRepoStateType>, repo: GitRepoStateType) => {
                     if (repo.owner.username === username) {
-                        acc[repo.id] = repo
+                        acc[repo.id] = repo;
                     }
 
-                    return acc
+                    return acc;
                 },
                 {},
-            )
+            );
         }
     }
 
-    return null
+    return null;
 };
 
 export const getAllGitReposSelector = (
     state: StoreObjectType<GitRepoStateType>,
-): StateObjectType<GitRepoStateType> =>
-    fetchGitReposStoreHandler.storeMaps.getValue(state);
+): StateObjectType<GitRepoStateType> => fetchGitReposStoreHandler.storeMaps.getValue(state);
