@@ -3,6 +3,7 @@ import React from 'react';
 import { Request, Response } from 'express';
 import { matchPath, match } from 'react-router-dom';
 import { createMemoryHistory, MemoryHistory } from 'history';
+import path from 'path';
 
 import { routes } from '@samsite/routing/routes';
 import { RouteType } from '@samsite/routing/types';

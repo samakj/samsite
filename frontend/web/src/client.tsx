@@ -4,6 +4,7 @@ import { ClientRouter } from '@samsite/routing/router';
 import { createBrowserHistory, History } from 'history';
 
 import { App } from './app';
+import { tryRegisterServiceWorker } from '@samsite/service-worker/try-register-service-worker';
 
 declare global {
     interface Window {
@@ -19,3 +20,5 @@ render(
     </App>,
     document.getElementById('app-root'),
 );
+
+tryRegisterServiceWorker();

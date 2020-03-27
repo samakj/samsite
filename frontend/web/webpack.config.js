@@ -4,6 +4,28 @@ const rules = require('./webpack.rules');
 const resolve = require('./webpack.resolve');
 
 module.exports = [
+    // Service Worker
+    {
+        resolve,
+        mode: 'development',
+        entry: [path.join(__dirname, 'src', 'service-worker', 'index.ts')],
+        target: 'node',
+        name: 'service-worker',
+        output: {
+            path: path.join(__dirname, 'public'),
+            filename: 'js/service-worker.bundle.js',
+            publicPath: '/static/',
+        },
+        module: {
+            rules: [rules.ts, rules.js],
+        },
+        devtool: 'source-map',
+        stats: {
+            children: false,
+            colors: true,
+        },
+    },
+
     // Server
     {
         resolve,
