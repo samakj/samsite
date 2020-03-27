@@ -2,7 +2,9 @@
 @import '../../styles/properties';
 @import '../../styles/variables';
 
+$small-mode-breakpoint: #{ ($mobile-first-pixel + $tablet-first-pixel) / 2 };
 $display-picture-size: 18.5rem;
+$small-display-picture-size: 12rem;
 
 .quick-info {
     width: 100%;
@@ -24,6 +26,11 @@ $display-picture-size: 18.5rem;
         grid-row-gap: 4rem;
     }
 
+    @media screen and (max-width: $small-mode-breakpoint) {
+        grid-template-rows: $small-display-picture-size auto;
+        grid-row-gap: 1rem;
+    }
+
     .display-picture-container {
         grid-area: display-picture;
 
@@ -32,6 +39,11 @@ $display-picture-size: 18.5rem;
         margin: auto;
 
         background-color: $dark-grey;
+
+        @media screen and (max-width: $small-mode-breakpoint) {
+            height: $small-display-picture-size;
+            width: $small-display-picture-size;
+        }
 
         img.display-picture {
             object-fit: cover;
@@ -54,6 +66,10 @@ $display-picture-size: 18.5rem;
 
                 margin-top: 0.5rem;
 
+                @media screen and (max-width: $small-mode-breakpoint) {
+                    grid-template-columns: 3rem auto;
+                }
+
                 &:first-child {
                     margin-top: 0;
                 }
@@ -63,6 +79,10 @@ $display-picture-size: 18.5rem;
                     font-weight: $bold;
                     text-transform: uppercase;
                     letter-spacing: $one-px;
+
+                    @media screen and (max-width: $small-mode-breakpoint) {
+                        font-size: 0.5rem;
+                    }
                 }
 
                 .value {
@@ -71,6 +91,10 @@ $display-picture-size: 18.5rem;
                     font-size: 1.5rem;
                     font-weight: $bold;
                     border-bottom: $one-px solid $dark-grey;
+
+                    @media screen and (max-width: $small-mode-breakpoint) {
+                        font-size: 0.75rem;
+                    }
                 }
             }
         }
@@ -82,6 +106,7 @@ $display-picture-size: 18.5rem;
 
             .link {
                 $link-image-size: 1rem;
+                $small-link-image-size: 0.5rem;
 
                 display: inline-grid;
                 grid-template-columns: $link-image-size auto;
@@ -93,6 +118,10 @@ $display-picture-size: 18.5rem;
                 background-color: $dark-grey;
                 cursor: pointer;
                 transition: background-color 300ms;
+
+                @media screen and (max-width: $small-mode-breakpoint) {
+                    grid-template-columns: $small-link-image-size auto;
+                }
 
                 &:first-child {
                     margin-left: 0;
@@ -109,13 +138,23 @@ $display-picture-size: 18.5rem;
                 .link-image-container {
                     height: $link-image-size;
                     width: $link-image-size;
+
+                    @media screen and (max-width: $small-mode-breakpoint) {
+                        width: $small-link-image-size;
+                    }
                 }
 
                 .link-text {
                     margin: 0 2rem;
+                    font-size: 1rem;
 
-                    @media screen and (max-width: 21.25rem) {
+                    @media screen and (max-width: $tablet-last-pixel) {
                         margin: 0 1rem;
+                    }
+
+                    @media screen and (max-width: $small-mode-breakpoint) {
+                        font-size: 0.5rem;
+                        font-weight: $bold;
                     }
                 }
             }
