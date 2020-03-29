@@ -1,0 +1,93 @@
+@import '../styles/colours';
+@import '../styles/properties';
+@import '../styles/variables';
+
+main.professional-page {
+    h1 {
+        margin: 1.5rem 0 0.5rem;
+
+        font-family: 'Playfair Display', serif;
+        font-weight: $regular;
+        font-size: 1.75rem;
+    }
+
+    h2 {
+        margin: 0.5rem 0 0.25rem;
+
+        font-family: 'Oswald', sans-serif;
+        font-weight: $regular;
+        font-size: 0.875rem;
+        letter-spacing: #{ 2 * $one-px};
+    }
+
+    h3 {
+        margin: 0.5rem 0 0.25rem;
+        padding-left: 0.5rem;
+
+        font-family: 'Oswald', sans-serif;
+        font-weight: $regular;
+        font-style: italic;
+        font-size: 0.625rem;
+        text-transform: uppercase;
+        letter-spacing: #{ 3 * $one-px};
+    }
+
+    ul {
+        margin: 0;
+        padding-left: 2.5rem;
+
+        @media screen and (max-width: $mobile-last-pixel) {
+            padding-left: 1.5rem;
+        }
+    }
+
+    p,
+    li,
+    .grade-table > *,
+    .reference-table > * {
+        font-family: 'Oswald', sans-serif;
+        font-weight: $light;
+        font-size: 0.875rem;
+        letter-spacing: $one-px;
+        color: $off-white;
+    }
+
+    .grade-table {
+        display: grid;
+        grid-template-columns: 14rem auto;
+        grid-column-gap: 1rem;
+    }
+
+    .personal-statement {
+        width: 100%;
+        margin-top: 2rem;
+        padding: 2rem;
+
+        background-color: $off-black;
+        color: $white;
+        font-size: 0.75rem;
+        letter-spacing: #{ 2 * $one-px};
+    }
+
+    .reference-table {
+        display: inline-flex;
+        flex-direction: column;
+
+        padding: 1rem;
+        margin: 0 2rem 1rem 0;
+
+        .name {
+            font-weight: $regular;
+            color: $white;
+        }
+
+        .title {
+            font-style: italic;
+        }
+
+        .email {
+            font-size: 0.75rem;
+            text-decoration: underline;
+        }
+    }
+}

@@ -6,7 +6,7 @@ import { ProfessionalPagePropsType } from '@samsite/components/professional-page
 export const ProfessionalPage: React.FunctionComponent<ProfessionalPagePropsType> = ({}) => {
     return (
         <main className="professional-page page-width-wrapper">
-            <p>
+            <p className="personal-statement">
                 I am a self taught developer, driven by the prospect of learning new architectures
                 and languages, as well as extending my current knowledge enabling me to develop more
                 performant, usable and readable programs. My engineering background has contributed
@@ -43,10 +43,13 @@ export const ProfessionalPage: React.FunctionComponent<ProfessionalPagePropsType
                 <li>Lloyds Register …</li>
             </ul>
 
-            <h2>Relevant Modules</h2>
+            <h3>Relevant Modules</h3>
             <ul>
                 <li>
-                    Group Design Project 77
+                    <div className="grade-table">
+                        <div className="title">Group Design Project</div>
+                        <div className="grade">77</div>
+                    </div>
                     <ul>
                         <li>Development of a Hydrofoiling Experimental Research Platform</li>
                         <li>
@@ -62,17 +65,52 @@ export const ProfessionalPage: React.FunctionComponent<ProfessionalPagePropsType
                         </li>
                     </ul>
                 </li>
-                <li>Maritime Robotics 62</li>
-                <li>Systems Design and Computing for Ships 64</li>
-                <li>Design and Computing 72</li>
+                <li>
+                    <div className="grade-table">
+                        <div className="title">Maritime Robotics</div>
+                        <div className="grade">62</div>
+                    </div>
+                </li>
+                <li>
+                    <div className="grade-table">
+                        <div className="title">Systems Design and Computing for Ships</div>
+                        <div className="grade">64</div>
+                    </div>
+                </li>
+                <li>
+                    <div className="grade-table">
+                        <div className="title">Design and Computing</div>
+                        <div className="grade">72</div>
+                    </div>
+                </li>
             </ul>
 
             <h2>A-Levels, Wallington County Grammar School</h2>
             <ul>
-                <li>Maths A*</li>
-                <li>Further Maths A</li>
-                <li>Physics A*</li>
-                <li>Design & Technology A</li>
+                <li>
+                    <div className="grade-table">
+                        <div className="title">Maths</div>
+                        <div className="grade">A*</div>
+                    </div>
+                    </li>
+                <li>
+                    <div className="grade-table">
+                        <div className="title">Further Maths</div>
+                        <div className="grade">A</div>
+                    </div>
+                    </li>
+                <li>
+                    <div className="grade-table">
+                        <div className="title">Physics</div>
+                        <div className="grade">A*</div>
+                    </div>
+                    </li>
+                <li>
+                    <div className="grade-table">
+                        <div className="title">Design & Technology</div>
+                        <div className="grade">A</div>
+                    </div>
+                    </li>
             </ul>
 
             <h1>Employment</h1>
@@ -135,17 +173,23 @@ export const ProfessionalPage: React.FunctionComponent<ProfessionalPagePropsType
             <h1>References</h1>
 
             <h2>Smarkets</h2>
-            <h3>Robin Harrison</h3>
-            <h4>CTO</h4>
-            <p>robin.harrison@smarkets.com</p>
-            <h3>Jason Haciepiri</h3>
-            <h4>Team Member</h4>
-            <p>jason.haciepiri@smarkets.com</p>
+            <div className="reference-table">
+                <div className="name">Robin Harrison</div>
+                <div className="title">CTO</div>
+                <a className="email" href="mailto:robin.harrison@smarkets.com">robin.harrison@smarkets.com</a>
+            </div>
+            <div className="reference-table">
+                <div className="name">Jason Haciepiri</div>
+                <div className="title">Team Member</div>
+                <a className="email" href="mailto:jason.haciepiri@smarkets.com">jason.haciepiri@smarkets.com</a>
+            </div>
 
             <h2>University</h2>
-            <h3>Dr Stephen W Boyd</h3>
-            <h4>Associate Professor</h4>
-            <p>s.w.boyd@soton.ac.uk</p>
+            <div className="reference-table">
+                <div className="name">Dr Stephen W Boyd</div>
+                <div className="title">Associate Professor</div>
+                <a className="email" href="mailto:s.w.boyd@soton.ac.uk">s.w.boyd@soton.ac.uk</a>
+            </div>
         </main>
     );
 };
