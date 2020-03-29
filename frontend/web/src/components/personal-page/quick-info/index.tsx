@@ -39,7 +39,7 @@ export const QuickInfo: React.FunctionComponent<QuickInfoPropsType> = ({}) => {
                 </div>
 
                 <div className="links">
-                    <a className="link" href="static/pdf/cv.pdf" download="Samuel Jones CV.pdf">
+                    <a className="link" href="/static/pdf/cv.pdf" download="Samuel Jones CV.pdf">
                         <AsyncImage
                             srcProgression={['/static/svg/file.svg']}
                             containerClass="link-image-container"
