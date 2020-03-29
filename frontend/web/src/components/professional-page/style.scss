@@ -90,4 +90,43 @@ main.professional-page {
             text-decoration: underline;
         }
     }
+
+    .download-link {
+        $link-image-size: 1rem;
+        $small-link-image-size: 0.5rem;
+
+        display: grid;
+        grid-template-columns: $link-image-size auto;
+        align-items: center;
+
+        padding: 0.5rem;
+        margin: 1rem 0 0 0.5rem;
+        width: fit-content;
+
+        background-color: $dark-grey;
+        cursor: pointer;
+        transition: background-color 300ms;
+
+        &:hover {
+            background-color: $mid-grey;
+        }
+
+        &:active {
+            background-color: $green;
+        }
+
+        .link-image-container {
+            height: $link-image-size;
+            width: $link-image-size;
+        }
+
+        .link-text {
+            margin: 0 4rem;
+            font-size: 1rem;
+
+            @media screen and (max-width: $tablet-last-pixel) {
+                margin: 0 2rem;
+            }
+        }
+    }
 }

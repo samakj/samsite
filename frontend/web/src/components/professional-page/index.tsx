@@ -2,6 +2,7 @@ import React from 'react';
 
 import '@samsite/components/professional-page/style.scss';
 import { ProfessionalPagePropsType } from '@samsite/components/professional-page/types';
+import { AsyncImage } from '@samsite/components/ui/async-image';
 
 export const ProfessionalPage: React.FunctionComponent<ProfessionalPagePropsType> = ({}) => {
     return (
@@ -190,6 +191,16 @@ export const ProfessionalPage: React.FunctionComponent<ProfessionalPagePropsType
                 <div className="title">Associate Professor</div>
                 <a className="email" href="mailto:s.w.boyd@soton.ac.uk">s.w.boyd@soton.ac.uk</a>
             </div>
+
+            <a className="download-link" href="/static/pdf/cv.pdf" download="Samuel Jones CV.pdf">
+                <AsyncImage
+                    srcProgression={['/static/svg/file.svg']}
+                    containerClass="link-image-container"
+                    imageClass="link-image"
+                    alt="Download"
+                />
+                <span className="link-text">Download CV</span>
+            </a>
         </main>
     );
 };
