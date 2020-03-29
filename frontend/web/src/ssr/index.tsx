@@ -3,14 +3,13 @@ import React from 'react';
 import { Request, Response } from 'express';
 import { matchPath, match } from 'react-router-dom';
 import { createMemoryHistory, MemoryHistory } from 'history';
-import path from 'path';
+import fs from 'fs';
+import cheerio from 'cheerio';
 
 import { routes } from '@samsite/routing/routes';
 import { RouteType } from '@samsite/routing/types';
 import { ServerRouter } from '@samsite/routing/router';
 import { App } from '@samsite/app';
-import fs from 'fs';
-import cheerio from 'cheerio';
 
 const getRouteMatch = (url: string): match =>
     routes.reduce((acc: match, route: RouteType): match => matchPath(url, route) || acc, null);
