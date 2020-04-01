@@ -25,7 +25,7 @@ const renderFullPage = (path: string, htmlToInject: string, preloadedState: obje
     const html: string = fs.readFileSync(`public/html/${routeTemplates[path].ssrTemplate}`).toString();
     const $ = cheerio.load(html);
 
-    $(templateParameters.appMountId).html(htmlToInject);
+    $(`#${templateParameters.appMountId}`).html(htmlToInject);
     $('body').append(`
         <script id="preloaded-state">
             window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\\u003c')}
