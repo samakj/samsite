@@ -11,6 +11,8 @@ import { RouteType } from '@samsite/routing/types';
 import { ServerRouter } from '@samsite/routing/router';
 import { App } from '@samsite/app';
 // @ts-ignore: Has to be old style for webpack plugin.
+const routeTemplates = require('@samsite/page-templates/route-templates');
+// @ts-ignore: Has to be old style for webpack plugin.
 import templateParameters from '@samsite/page-templates/template-parameters';
 
 const getRouteMatch = (url: string): match =>
@@ -19,8 +21,8 @@ const getRouteMatch = (url: string): match =>
 const getPreloadedState = (noSSR: boolean = false): Promise<object> =>
     new Promise((resolve: Function) => (noSSR ? resolve({}) : resolve({ test: 123 })));
 
-const renderFullPage = (htmlToInject: string, preloadedState: object): string => {
-    const html: string = fs.readFileSync('public/index.html').toString();
+const renderFullPage = (path: string, htmlToInject: string, preloadedState: object): string => {
+    const html: string = fs.readFileSync(`public/html/${routeTemplates[path].ssrTemplate}`).toString();
     const $ = cheerio.load(html);
 
     $(templateParameters.appMountId).html(htmlToInject);
@@ -57,6 +59,7 @@ export const getPageSource = (request: Request, response: Response): Promise<Res
 
                 return response.status(200).send(
                     renderFullPage(
+                        routeMatch.path,
                         renderToString(
                             <App preloadedState={preloadedState} history={history}>
                                 <ServerRouter context={context} location={request.url} />
