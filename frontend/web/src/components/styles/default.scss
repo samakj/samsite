@@ -13,7 +13,9 @@ html {
 }
 
 body {
-    margin: 0 0 4rem 0;
+    $body-bottom-margin: 4rem;
+    margin: 0 0 $body-bottom-margin 0;
+    min-height: calc(100vh - #{ $body-bottom-margin });
 
     background-color: $black;
     color: $white;
