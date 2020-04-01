@@ -4,7 +4,6 @@ import { History } from 'history';
 export interface RouteType {
     path: string;
     component: React.ComponentClass<any, any> | React.FunctionComponent<any>;
-    lazyComponent: React.ComponentClass<any, any> | React.FunctionComponent<any>;
     exact: boolean;
 }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from 'react-dom';
+import { hydrate } from 'react-dom';
 import { ClientRouter } from '@samsite/routing/router';
 import { createBrowserHistory, History } from 'history';
 
@@ -16,7 +16,7 @@ declare global {
 
 const browserHistory: History = createBrowserHistory();
 
-render(
+hydrate(
     <App preloadedState={window.__PRELOADED_STATE__} history={browserHistory}>
         <ClientRouter history={browserHistory} />
     </App>,

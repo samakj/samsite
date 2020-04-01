@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import { ConnectedRouter } from 'connected-react-router';
 import { StaticRouter, Route, Switch } from 'react-router-dom';
 
@@ -9,7 +9,6 @@ import {
     ServerRouterPropsType,
 } from '@samsite/routing/types';
 import { routes } from '@samsite/routing/routes';
-import { isClientSide } from '@samsite/utils/render-side';
 
 export const RoutesSwitch: React.FunctionComponent<RoutesSwitchPropsType> = () => {
     return (
@@ -19,7 +18,7 @@ export const RoutesSwitch: React.FunctionComponent<RoutesSwitchPropsType> = () =
                     <Route
                         path={route.path}
                         exact={route.exact || false}
-                        component={isClientSide() ? route.lazyComponent : route.component}
+                        component={route.component}
                         key={route.path}
                     />
                 ),
@@ -31,9 +30,7 @@ export const RoutesSwitch: React.FunctionComponent<RoutesSwitchPropsType> = () =
 export const ClientRouter: React.FunctionComponent<ClientRouterPropsType> = ({ history }) => {
     return (
         <ConnectedRouter history={history}>
-            <Suspense fallback={<div>Loading...</div>}>
                 <RoutesSwitch />
-            </Suspense>
         </ConnectedRouter>
     );
 };
