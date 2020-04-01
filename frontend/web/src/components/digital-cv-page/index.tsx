@@ -1,12 +1,12 @@
 import React from 'react';
 
-import '@samsite/components/professional-page/style.scss';
-import { ProfessionalPagePropsType } from '@samsite/components/professional-page/types';
+import '@samsite/components/digital-cv-page/style.scss';
+import { DigitalCvPagePropsType } from '@samsite/components/digital-cv-page/types';
 import { AsyncImage } from '@samsite/components/ui/async-image';
 
-export const ProfessionalPage: React.FunctionComponent<ProfessionalPagePropsType> = ({}) => {
+export const DigitalCvPage: React.FunctionComponent<DigitalCvPagePropsType> = ({}) => {
     return (
-        <main className="professional-page page-width-wrapper">
+        <main className="digital-cv-page page-width-wrapper">
             <p className="personal-statement">
                 I am a self taught developer, driven by the prospect of learning new architectures
                 and languages, as well as extending my current knowledge enabling me to develop more

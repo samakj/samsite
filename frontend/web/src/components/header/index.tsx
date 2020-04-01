@@ -10,7 +10,7 @@ import { push } from 'connected-react-router';
 const DumbHeader: React.FunctionComponent<HeaderPropsType> = ({ onNavigate }) => {
     const navigateHome = (): void => onNavigate('/');
     const navigatePersonal = (): void => onNavigate('/personal/');
-    const navigateProfessional = (): void => onNavigate('/professional/');
+    const navigateDigitalCv = (): void => onNavigate('/digital-cv/');
     const navigateProjects = (): void => onNavigate('/projects/');
 
     const [mobileNavOpen, setMobileNavOpen] = useState(false);
@@ -27,8 +27,8 @@ const DumbHeader: React.FunctionComponent<HeaderPropsType> = ({ onNavigate }) =>
                         <li className="nav-item" onClick={navigatePersonal}>
                             Personal
                         </li>
-                        <li className="nav-item" onClick={navigateProfessional}>
-                            Professional
+                        <li className="nav-item" onClick={navigateDigitalCv}>
+                            Digital CV
                         </li>
                         <li className="nav-item" onClick={navigateProjects}>
                             Projects
@@ -46,7 +46,7 @@ const DumbHeader: React.FunctionComponent<HeaderPropsType> = ({ onNavigate }) =>
                         <li className="nav-item" onClick={navigatePersonal}>
                             Personal
                         </li>
-                        <li className="nav-item" onClick={navigateProfessional}>
+                        <li className="nav-item" onClick={navigateDigitalCv}>
                             Professional
                         </li>
                         <li className="nav-item" onClick={navigateProjects}>

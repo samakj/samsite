@@ -2,7 +2,7 @@ import { lazy } from 'react';
 
 import { RouteType } from '@samsite/routing/types';
 import { PersonalPage } from '@samsite/components/personal-page';
-import { ProfessionalPage } from '@samsite/components/professional-page';
+import { DigitalCvPage } from '@samsite/components/digital-cv-page';
 
 export const routes: RouteType[] = [
     {
@@ -18,9 +18,9 @@ export const routes: RouteType[] = [
         exact: true,
     },
     {
-        path: '/professional/',
-        component: ProfessionalPage,
-        lazyComponent: lazy(() => Promise.resolve({ default: ProfessionalPage })),
+        path: '/digital-cv/',
+        component: DigitalCvPage,
+        lazyComponent: lazy(() => Promise.resolve({ default: DigitalCvPage })),
         exact: true,
     },
 ];
