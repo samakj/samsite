@@ -10,6 +10,8 @@ import { routes } from '@samsite/routing/routes';
 import { RouteType } from '@samsite/routing/types';
 import { ServerRouter } from '@samsite/routing/router';
 import { App } from '@samsite/app';
+// @ts-ignore: Has to be old style for webpack plugin.
+import templateParameters from '@samsite/page-templates/template-parameters';
 
 const getRouteMatch = (url: string): match =>
     routes.reduce((acc: match, route: RouteType): match => matchPath(url, route) || acc, null);
@@ -18,13 +20,15 @@ const getPreloadedState = (noSSR: boolean = false): Promise<object> =>
     new Promise((resolve: Function) => (noSSR ? resolve({}) : resolve({ test: 123 })));
 
 const renderFullPage = (htmlToInject: string, preloadedState: object): string => {
-    const html: string = fs.readFileSync('src/page-templates/default.html').toString();
+    const html: string = fs.readFileSync('public/index.html').toString();
     const $ = cheerio.load(html);
 
-    $('#app-root').html(htmlToInject);
+    $(templateParameters.appMountId).html(htmlToInject);
     $('body').append(`
-        <script >
+        <script id="preloaded-state">
             window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\\u003c')}
+            var el = document.getElementById('preloaded-state')
+            el.parentElement.removeChild(el)
         </script>
     `);
 

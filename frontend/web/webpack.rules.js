@@ -3,7 +3,7 @@ var MCEP = require('mini-css-extract-plugin');
 
 module.exports = {
     ts: {
-        test: /.tsx?$/,
+        test: /\.tsx?$/,
         use: [
             {
                 loader: 'awesome-typescript-loader',
@@ -16,7 +16,7 @@ module.exports = {
         exclude: /node_modules/,
     },
     js: {
-        test: /.jsx?$/,
+        test: /\.jsx?$/,
         use: [
             {
                 loader: 'babel-loader',
@@ -32,7 +32,7 @@ module.exports = {
         exclude: /node_modules/,
     },
     scss: {
-        test: /.(sc|c)ss$/,
+        test: /\.(sc|c)ss$/,
         use: [
             MCEP.loader,
             {
