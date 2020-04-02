@@ -4,6 +4,7 @@ import { RouteType } from '@samsite/routing/types';
 import { PersonalPage } from '@samsite/components/personal-page';
 import { DigitalCvPage } from '@samsite/components/digital-cv-page';
 import { InDevPage } from '@samsite/components/in-dev-page';
+import { ProjectsPage } from '@samsite/components/projects-page';
 
 export const routes: RouteType[] = [
     {
@@ -23,7 +24,7 @@ export const routes: RouteType[] = [
     },
     {
         path: '/projects/',
-        component: InDevPage,
+        component: ProjectsPage,
         exact: true,
     },
 
