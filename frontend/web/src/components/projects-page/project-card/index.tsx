@@ -14,11 +14,11 @@ export const ProjectCard: React.FunctionComponent<ProjectCardPropsType> = ({ pro
             </div>
             <ul className="keywords">{
                 project.keywords.map(
-                    (keyword: string) => (
-                        <li className={`keyword -${stringToClassName(keyword)}`}>
+                    (keyword: string, index: number) => (
+                        <li className={`keyword -${stringToClassName(keyword)}`} key={index}>
                             {keyword}
                         </li>
-                    )
+                    ),
                 )
             }</ul>
             <div className="description">{project.description}</div>
@@ -28,11 +28,11 @@ export const ProjectCard: React.FunctionComponent<ProjectCardPropsType> = ({ pro
                         <div className="todos-title">Todo:</div>
                         <ul className="todos">{
                             project.todos && project.todos.map(
-                                (todo: string) => (
-                                    <li className="todo">
+                                (todo: string, index: number) => (
+                                    <li className="todo" key={index}>
                                         {todo}
                                     </li>
-                                )
+                                ),
                             )
                         }</ul>
                     </>

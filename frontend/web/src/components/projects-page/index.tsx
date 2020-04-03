@@ -10,7 +10,7 @@ export const ProjectsPage: React.FunctionComponent<ProjectsPagePropsType> = ({})
         <main className="projects-page page-width-wrapper">
             <div className="projects">
             {
-                data.map((project: ProjectDataType) => <ProjectCard project={project} />)
+                data.map((project: ProjectDataType) => <ProjectCard project={project} key={project.name} />)
             }
             </div>
         </main>
