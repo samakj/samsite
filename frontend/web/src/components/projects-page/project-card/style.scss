@@ -4,12 +4,14 @@
 @import '../tag-colours';
 
 .project {
+    display: block;
     width: 100%;
     min-width: 0;
     margin: 2rem 0 0;
     padding: 2rem;
 
     background-color: $off-black;
+    overflow: hidden;
 
     @media screen and (min-width: $laptop-first-pixel) {
         padding: 2rem 4rem;
@@ -21,6 +23,34 @@
 
     @media screen and (max-width: #{2 * $mobile-first-pixel}) {
         margin: 2rem auto 0;
+    }
+
+    &.-fade-in {
+        animation: fade_in 300ms forwards;
+    }
+
+    &.-fade-out {
+        animation: fade_out 300ms forwards;
+    }
+
+    @keyframes fade_in {
+        0% {
+            display: block;
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @keyframes fade_out {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            display: none;
+            opacity: 0;
+        }
     }
 
     .name-grid {
@@ -70,7 +100,7 @@
             background-color: $dark-grey;
             text-transform: uppercase;
             font-weight: $bold;
-            letter-spacing: #{ 2 * $one-px};
+            letter-spacing: #{2 * $one-px};
 
             @include keyword_colours(background-color);
         }
@@ -80,7 +110,7 @@
         margin-top: 1rem;
 
         font-size: 0.875rem;
-        letter-spacing: #{ 2 * $one-px};
+        letter-spacing: #{2 * $one-px};
     }
 
     .todos-title {
@@ -89,7 +119,7 @@
         text-transform: uppercase;
         font-weight: $bold;
         font-size: 0.75rem;
-        letter-spacing: #{ 2 * $one-px};
+        letter-spacing: #{2 * $one-px};
     }
 
     .todos {

@@ -1,0 +1,137 @@
+@import '../../styles/colours';
+@import '../../styles/properties';
+@import '../../styles/variables';
+@import '../tag-colours';
+
+.project-filter-bar {
+    .filter-group {
+        display: inline-flex;
+        align-items: center;
+        margin: 0 2rem 0.5rem 0;
+
+        .filter-label {
+            display: inline-block;
+            width: 3rem;
+            margin-right: 0.5rem;
+
+            text-transform: uppercase;
+            font-weight: $bold;
+            font-size: 0.5rem;
+            letter-spacing: #{2 * $one-px};
+        }
+
+        .filter-drop-down {
+            position: relative;
+
+            display: inline-block;
+
+            cursor: pointer;
+
+            .filter {
+                display: inline-block;
+                margin-right: 0.25rem;
+                width: fit-content;
+
+                font-size: 0.5rem;
+                padding: 0.25rem 0.5rem;
+                background-color: $dark-grey;
+                text-transform: uppercase;
+                font-weight: $bold;
+                letter-spacing: #{2 * $one-px};
+
+                @include state_colours(background-color);
+                @include keyword_colours(background-color);
+            }
+
+            .selected {
+                min-height: 2rem;
+                min-width: 8rem;
+                padding: 0.25rem 0.25rem 0 0.5rem;
+                margin: 0;
+
+                display: inline-flex;
+                align-items: center;
+                flex-wrap: wrap;
+
+                border: $one-px solid $off-black;
+                background-color: $black;
+
+                .filter {
+                    margin-bottom: 0.25rem;
+                }
+            }
+
+            .available {
+                display: none;
+
+                position: absolute;
+                top: 100%;
+                left: 0;
+                margin: 0;
+                padding: 0.5rem 0;
+                width: 8rem;
+
+                border: $one-px solid $off-black;
+                background-color: $black;
+                z-index: 9;
+
+                &.-show {
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                hr {
+                    width: 100%;
+                    margin: 0;
+
+                    border-color: $off-black;
+                }
+
+                .item {
+                    display: flex;
+                    align-items: center;
+
+                    padding: 0.25rem 0.5rem;
+
+                    list-style: none;
+                    transition: background-color 300ms;
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: $off-black;
+                    }
+
+                    &.-add:before,
+                    &.-remove:before {
+                        content: '';
+
+                        display: block;
+                        height: 0.5rem;
+                        width: 0.5rem;
+                        margin-right: 0.5rem;
+
+                        background-size: contain;
+                    }
+
+                    &.-add:before {
+                        background-image: url('/static/svg/add.svg');
+                    }
+
+                    &.-remove:before {
+                        background-image: url('/static/svg/cross.svg');
+                    }
+
+                    .filter {
+                        display: block;
+
+                        margin-bottom: 0.25rem;
+
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
