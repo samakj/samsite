@@ -52,7 +52,7 @@ main.digital-cv-page {
     .grade-table > *,
     .reference-table > * {
         font-family: 'Oswald', sans-serif;
-        font-weight: $light;
+        font-weight: 300;
         font-size: 0.875rem;
         letter-spacing: $one-px;
         color: $off-white;
@@ -72,7 +72,7 @@ main.digital-cv-page {
         background-color: $off-black;
         color: $white;
         font-size: 0.75rem;
-        letter-spacing: #{ 2 * $one-px};
+        letter-spacing: #{ 4 * $one-px};
     }
 
     .reference-table {
