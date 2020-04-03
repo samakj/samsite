@@ -1,6 +1,7 @@
 @import '../../styles/colours';
 @import '../../styles/properties';
 @import '../../styles/variables';
+@import '../tag-colours';
 
 .project {
     width: 100%;
@@ -49,17 +50,7 @@
             font-weight: $bold;
             letter-spacing: 0.0625rem;
 
-            &.-complete {
-                background-color: $dark-green;
-            }
-
-            &.-in-dev {
-                background-color: $dark-yellow;
-            }
-
-            &.-concept {
-                background-color: $dark-red;
-            }
+            @include state_colours(background-color);
         }
     }
 
@@ -81,16 +72,7 @@
             font-weight: $bold;
             letter-spacing: #{ 2 * $one-px};
 
-            $keywords: react, javascript, websockets, rest, flask, python, postgresql, mqtt, shell;
-            $hue-spread: 360 / length($keywords);
-
-            @each $keyword in $keywords {
-                $i: index($keywords, $keyword);
-
-                &.-#{$keyword} {
-                    background-color: hsl($i * $hue-spread, 80%, 15%);
-                }
-            }
+            @include keyword_colours(background-color);
         }
     }
 

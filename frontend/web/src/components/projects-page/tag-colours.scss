@@ -1,0 +1,26 @@
+@import '../styles/colours';
+
+$states: complete, in-dev, concept;
+$state-colours: $dark-green, $dark-yellow, $dark-red;
+
+@mixin state_colours($property) {
+    @each $state in $states {
+        &.-#{$state} {
+            #{$property}: nth($state-colours, index($states, $state));
+        }
+    }
+}
+
+
+$keywords: react, javascript, websockets, rest, flask, python, postgresql, mqtt, shell;
+$hue-spread: 360 / length($keywords);
+
+@mixin keyword_colours($property) {
+    @each $keyword in $keywords {
+        $i: index($keywords, $keyword);
+
+        &.-#{$keyword} {
+            #{$property}: hsl($i * $hue-spread, 80%, 15%);
+        }
+    }
+}
