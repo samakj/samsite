@@ -14,6 +14,10 @@
         padding: 2rem 4rem;
     }
 
+    @media screen and (max-width: $tablet-last-pixel) {
+        max-width: 36rem;
+    }
+
     @media screen and (max-width: #{2 * $mobile-first-pixel}) {
         margin: 2rem auto 0;
     }

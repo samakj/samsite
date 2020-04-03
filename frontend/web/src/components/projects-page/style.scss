@@ -10,10 +10,10 @@ main.projects-page {
 
         width: 100%;
 
-        @media screen and (max-width: #{2 * $mobile-first-pixel}) {
+        @media screen and (max-width: $tablet-last-pixel) {
             grid-template-columns: auto;
-            grid-template-rows: auto auto;
             grid-column-gap: 0;
+            justify-content: center;
         }
     }
 }
