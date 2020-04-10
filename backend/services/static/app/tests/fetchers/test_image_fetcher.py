@@ -3,7 +3,7 @@ import pytest
 from samsite_flask import SamsiteFlask
 
 from errors.InvalidPath import InvalidPath
-from fetchers.ImageFetcher import create_internal_path, ImageFetcher
+from fetchers.ImageFetcher import ImageFetcher
 from models.Resolution import ResolutionValues
 
 
@@ -13,34 +13,34 @@ def _image_fetcher() -> ImageFetcher:
     return image_fetcher
 
 
-class TestCreateInternalPath:
-    def test_append_store_path(self, app: SamsiteFlask) -> None:
+class TestGetInternalPath:
+    def test_append_store_path(self, app: SamsiteFlask, image_fetcher: ImageFetcher) -> None:
         app.STATIC_DIR = './test'
         path = 'path'
 
         with app.app_context():
-            assert create_internal_path(path) == f"{app.STATIC_DIR}/{path}"
+            assert image_fetcher.get_internal_path(path) == f"{app.STATIC_DIR}/{path}"
 
-    def test_strip_leading_slash(self, app: SamsiteFlask) -> None:
+    def test_strip_leading_slash(self, app: SamsiteFlask, image_fetcher: ImageFetcher) -> None:
         app.STATIC_DIR = './test'
         path = 'path'
 
         with app.app_context():
-            assert create_internal_path(f"/{path}") == f"{app.STATIC_DIR}/{path}"
+            assert image_fetcher.get_internal_path(f"/{path}") == f"{app.STATIC_DIR}/{path}"
 
-    def test_strip_trailing_slash(self, app: SamsiteFlask) -> None:
+    def test_strip_trailing_slash(self, app: SamsiteFlask, image_fetcher: ImageFetcher) -> None:
         app.STATIC_DIR = './test'
         path = 'path'
 
         with app.app_context():
-            assert create_internal_path(f"{path}/") == f"{app.STATIC_DIR}/{path}"
+            assert image_fetcher.get_internal_path(f"{path}/") == f"{app.STATIC_DIR}/{path}"
 
-    def test_strip_dir_navigation(self, app: SamsiteFlask) -> None:
+    def test_strip_dir_navigation(self, app: SamsiteFlask, image_fetcher: ImageFetcher) -> None:
         app.STATIC_DIR = './test'
         path = 'path'
 
         with app.app_context():
-            assert create_internal_path(f"../../../{path}") == f"{app.STATIC_DIR}/{path}"
+            assert image_fetcher.get_internal_path(f"../../../{path}") == f"{app.STATIC_DIR}/{path}"
 
 
 class TestGetResolutionPath:

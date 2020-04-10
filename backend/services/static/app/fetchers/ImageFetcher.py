@@ -5,13 +5,13 @@ from errors.InvalidPath import InvalidPath
 from models.Resolution import ResolutionValues
 
 
-def create_internal_path(path: str) -> str:
-    clean_path = re.sub(r"\.\./", "", path).strip("/")
-
-    return f"{current_app.STATIC_DIR}/{clean_path}"
-
-
 class ImageFetcher:
+    @staticmethod
+    def get_internal_path(path: str) -> str:
+        clean_path = re.sub(r"\.\./", "", path).strip("/")
+
+        return f"{current_app.STATIC_DIR}/{clean_path}"
+
     @staticmethod
     def get_resolution_path(path: str, resolution: str) -> str:
         if resolution is not ResolutionValues.RAW:
