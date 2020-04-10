@@ -10,6 +10,8 @@ def create_app() -> SamsiteFlask:
 
     cache.init_app(app=app)
 
+    app.STATIC_DIR = "./store"
+
     return app
 
 
