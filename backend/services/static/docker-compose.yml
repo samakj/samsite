@@ -1,0 +1,28 @@
+version: "3"
+services:
+  static_app:
+    build: ./app
+    container_name: static_app
+    volumes:
+      - ./app:/app
+      - ../../libs:/libs
+    environment:
+      - CACHE_HOST=static_cache
+      - CACHE_PASSWORD=${CACHE_PASSWORD}
+      - CACHE_PORT=${CACHE_PORT}
+      - FLASK_ENV=${FLASK_ENV}
+      - LC_ALL=${LANG}
+      - LANG=${LANG}
+      - VIRTUAL_PORT=${SERVICE_PORT}
+    ports:
+      - "127.0.0.1:${SERVICE_PORT}:${SERVICE_PORT}"
+    links:
+      - static_cache
+  static_cache:
+    build: ./cache
+    container_name: static_cache
+    environment:
+      - REDIS_PASSWORD=${CACHE_PASSWORD}
+      - VIRTUAL_PORT=${CACHE_PORT}
+    ports:
+      - "127.0.0.1:${CACHE_PORT}:${CACHE_PORT}"
