@@ -1,4 +1,4 @@
-class ResolutionValues:
+class ResolutionName:
     LOW = "LOW"
     MED = "MED"
     HIGH = "HIGH"
@@ -7,7 +7,7 @@ class ResolutionValues:
     ALL = {LOW, MED, HIGH, RAW}
 
 
-class ResolutionDimensions:
-    LOW = {"height": 108, "width": 192}
-    MED = {"height": 540, "width": 910}
-    HIGH = {"height": 1080, "width": 1920}
+class ResolutionMaxDimension:
+    LOW = 192
+    MED = 910
+    HIGH = 1920
