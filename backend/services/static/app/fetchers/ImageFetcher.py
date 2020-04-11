@@ -23,7 +23,7 @@ class ImageFetcher:
             path_split = path.split("/")
 
             if len(path_split) < 2:
-                raise InvalidPath("Invalid path to get resolution path from.")
+                raise InvalidPath(f"Invalid image path: '{path}'")
 
             path_split[-2] = f"{path_split[-2]}/resized_images"
             path_split[-1] = path_split[-1].replace(".", f".{resolution.lower()}.")
@@ -36,12 +36,12 @@ class ImageFetcher:
         try:
             image = Image.open(raw_path)
         except IOError:
-            raise InvalidPath("Invalid image path.")
+            raise InvalidPath(f"Invalid image path: '{raw_path}'")
 
         try:
             max_dimension = getattr(ResolutionMaxDimension, resolution)
         except AttributeError:
-            raise InvalidResolution("Invalid resolution given.")
+            raise InvalidResolution(f"Invalid resolution: '{resolution}'")
 
         resize_ratio = min(max_dimension / image.width, max_dimension / image.height)
 
@@ -77,7 +77,7 @@ class ImageFetcher:
             pass
 
         if image is None and resolution == ResolutionName.RAW:
-            raise InvalidPath(f"Invalid image path: {path}")
+            raise InvalidPath(f"Invalid image path: '{path}'")
         if image is None:
             image = ImageFetcher.resize_image(
                 raw_path=internal_raw_path,
