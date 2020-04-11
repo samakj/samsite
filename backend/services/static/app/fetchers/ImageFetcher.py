@@ -5,8 +5,8 @@ from typing import Optional
 from flask import current_app
 from PIL import Image
 
-from errors.InvalidPath import InvalidPath
-from errors.InvalidResolution import InvalidResolution
+from errors.InvalidPath import InvalidPathError
+from errors.InvalidResolution import InvalidResolutionError
 from models.Resolution import ResolutionMaxDimension, ResolutionName
 
 
@@ -23,7 +23,7 @@ class ImageFetcher:
             path_split = path.split("/")
 
             if len(path_split) < 2:
-                raise InvalidPath(f"Invalid image path: '{path}'")
+                raise InvalidPathError(f"Invalid image path: '{path}'")
 
             path_split[-2] = f"{path_split[-2]}/resized_images"
             path_split[-1] = path_split[-1].replace(".", f".{resolution.lower()}.")
@@ -36,12 +36,12 @@ class ImageFetcher:
         try:
             image = Image.open(raw_path)
         except IOError:
-            raise InvalidPath(f"Invalid image path: '{raw_path}'")
+            raise InvalidPathError(f"Invalid image path: '{raw_path}'")
 
         try:
             max_dimension = getattr(ResolutionMaxDimension, resolution)
         except AttributeError:
-            raise InvalidResolution(f"Invalid resolution: '{resolution}'")
+            raise InvalidResolutionError(f"Invalid resolution: '{resolution}'")
 
         resize_ratio = min(max_dimension / image.width, max_dimension / image.height)
 
@@ -64,7 +64,7 @@ class ImageFetcher:
     @staticmethod
     def fetch_image(path: str, resolution: Optional[str] = ResolutionName.RAW) -> Image:
         if resolution not in ResolutionName.ALL:
-            raise InvalidResolution(f"Invalid resolution: '{resolution}'")
+            raise InvalidResolutionError(f"Invalid resolution: '{resolution}'")
 
         internal_raw_path = ImageFetcher.get_internal_path(path=path)
         internal_resized_path = ImageFetcher.get_resolution_path(
@@ -80,7 +80,7 @@ class ImageFetcher:
             pass
 
         if image is None and resolution == ResolutionName.RAW:
-            raise InvalidPath(f"Invalid image path: '{path}'")
+            raise InvalidPathError(f"Invalid image path: '{path}'")
         if image is None:
             image = ImageFetcher.resize_image(
                 raw_path=internal_raw_path,

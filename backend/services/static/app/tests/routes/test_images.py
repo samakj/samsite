@@ -5,8 +5,8 @@ from unittest.mock import Mock
 from flask.testing import FlaskClient
 from PIL import Image
 
-from errors.InvalidPath import InvalidPath
-from errors.InvalidResolution import InvalidResolution
+from errors.InvalidPath import InvalidPathError
+from errors.InvalidResolution import InvalidResolutionError
 from fetchers.ImageFetcher import ImageFetcher
 
 
@@ -41,7 +41,7 @@ class TestGetImage:
         image_fetcher.fetch_image.assert_called_once_with(path=self.filename, resolution=resolution.upper())
 
     def test_image_not_found(self, client: FlaskClient) -> None:
-        ImageFetcher.fetch_image.side_effect = InvalidPath('')
+        ImageFetcher.fetch_image.side_effect = InvalidPathError('')
 
         response = client.get(f"{self.route}{self.filename}/")
         response_data = response.get_json()
@@ -52,7 +52,7 @@ class TestGetImage:
 
     def test_bad_resolution(self, client: FlaskClient) -> None:
         resolution = "test"
-        ImageFetcher.fetch_image.side_effect = InvalidResolution('')
+        ImageFetcher.fetch_image.side_effect = InvalidResolutionError('')
 
         response = client.get(f"{self.route}{self.filename}/{resolution}/")
         response_data = response.get_json()

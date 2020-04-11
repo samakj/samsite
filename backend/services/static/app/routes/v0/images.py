@@ -2,8 +2,8 @@ from flask import Blueprint, Response, send_file
 from PIL import Image
 from samsite_flask.exceptions import APIError
 
-from errors.InvalidPath import InvalidPath
-from errors.InvalidResolution import InvalidResolution
+from errors.InvalidPath import InvalidPathError
+from errors.InvalidResolution import InvalidResolutionError
 from fetchers.ImageFetcher import ImageFetcher
 
 V0_IMAGES_BLUEPRINT = Blueprint(__name__, "v0_images")
@@ -20,9 +20,9 @@ def get_image(image_path: str) -> Response:
 
     try:
         image = ImageFetcher.fetch_image(path="/".join(path_split), resolution=resolution)
-    except InvalidPath:
+    except InvalidPathError:
         raise APIError(404, "IMAGE_NOT_FOUND")
-    except InvalidResolution:
+    except InvalidResolutionError:
         raise APIError(400, "BAD_RESOLUTION", {"resolution": resolution})
 
     return send_file(image.filename, mimetype=Image.MIME[image.format])

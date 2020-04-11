@@ -5,8 +5,8 @@ from unittest.mock import Mock
 import pytest
 from PIL import Image
 
-from errors.InvalidPath import InvalidPath
-from errors.InvalidResolution import InvalidResolution
+from errors.InvalidPath import InvalidPathError
+from errors.InvalidResolution import InvalidResolutionError
 from fetchers.ImageFetcher import ImageFetcher
 from models.Resolution import ResolutionMaxDimension, ResolutionName
 from samsite_flask import SamsiteFlask
@@ -82,7 +82,7 @@ class TestGetResolutionPath:
         resolution = ResolutionName.HIGH
         path = "path"
 
-        with pytest.raises(InvalidPath) as error:
+        with pytest.raises(InvalidPathError) as error:
             image_fetcher.get_resolution_path(path, resolution)
 
         assert error.value.message == f"Invalid image path: '{path}'"
@@ -104,7 +104,7 @@ class TestResizeImage:
     def test_invalid_path(self, image_fetcher: ImageFetcher) -> None:
         resolution = ResolutionName.HIGH
 
-        with pytest.raises(InvalidPath) as error:
+        with pytest.raises(InvalidPathError) as error:
             image_fetcher.resize_image(self.path, self.resized_path, resolution)
 
         assert error.value.message == f"Invalid image path: '{self.path}'"
@@ -113,7 +113,7 @@ class TestResizeImage:
         resolution = "test"
 
         with TemporaryImageFile(self.path):
-            with pytest.raises(InvalidResolution) as error:
+            with pytest.raises(InvalidResolutionError) as error:
                 image_fetcher.resize_image(self.path, self.resized_path, resolution)
 
         assert error.value.message == f"Invalid resolution: '{resolution}'"
@@ -172,7 +172,7 @@ class TestFetchImage:
             os.remove(self.resized_path)
 
     def test_invalid_path(self, image_fetcher: ImageFetcher) -> None:
-        with pytest.raises(InvalidPath) as error:
+        with pytest.raises(InvalidPathError) as error:
             image_fetcher.fetch_image(self.path)
 
         assert error.value.message == f"Invalid image path: '{self.path}'"
@@ -180,7 +180,7 @@ class TestFetchImage:
     def test_invalid_resolution(self, image_fetcher: ImageFetcher) -> None:
         resolution = "test"
 
-        with pytest.raises(InvalidResolution) as error:
+        with pytest.raises(InvalidResolutionError) as error:
             image_fetcher.fetch_image(self.path, resolution)
 
         assert error.value.message == f"Invalid resolution: '{resolution}'"
