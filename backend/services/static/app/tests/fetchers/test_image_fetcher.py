@@ -2,7 +2,6 @@ import os
 from typing import Tuple
 
 import pytest
-from flask.testing import FlaskClient
 from PIL import Image
 
 from errors.InvalidPath import InvalidPath
@@ -13,7 +12,7 @@ from samsite_flask import SamsiteFlask
 
 
 @pytest.fixture(scope="function", name="image_fetcher")
-def _image_fetcher(client: FlaskClient) -> ImageFetcher:
+def _image_fetcher() -> ImageFetcher:
     image_fetcher = ImageFetcher()
     return image_fetcher
 

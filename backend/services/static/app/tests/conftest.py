@@ -10,7 +10,7 @@ def _app() -> SamsiteFlask:
     return app
 
 
-@pytest.fixture(scope="function", name="client")
+@pytest.fixture(scope="function", name="client", autouse=True)
 def _client(app: SamsiteFlask) -> FlaskClient:
     client = app.test_client()
 
