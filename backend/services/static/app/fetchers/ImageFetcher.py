@@ -63,6 +63,9 @@ class ImageFetcher:
 
     @staticmethod
     def fetch_image(path: str, resolution: Optional[str] = ResolutionName.RAW) -> Image:
+        if resolution not in ResolutionName.ALL:
+            raise InvalidResolution(f"Invalid resolution: '{resolution}'")
+
         internal_raw_path = ImageFetcher.get_internal_path(path=path)
         internal_resized_path = ImageFetcher.get_resolution_path(
             path=internal_raw_path,

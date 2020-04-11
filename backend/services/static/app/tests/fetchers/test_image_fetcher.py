@@ -177,6 +177,14 @@ class TestFetchImage:
 
         assert error.value.message == f"Invalid image path: '{self.path}'"
 
+    def test_invalid_resolution(self, image_fetcher: ImageFetcher) -> None:
+        resolution = "test"
+
+        with pytest.raises(InvalidResolution) as error:
+            image_fetcher.fetch_image(self.path, resolution)
+
+        assert error.value.message == f"Invalid resolution: '{resolution}'"
+
     def test_get_internal_path_call(self, image_fetcher: ImageFetcher) -> None:
         with TemporaryImageFile(self.resized_path) as resized_image:
             ImageFetcher.resize_image.return_value = resized_image
