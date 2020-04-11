@@ -1,5 +1,6 @@
 import pytest
 
+from flask.testing import FlaskClient
 from samsite_flask import SamsiteFlask
 
 from errors.InvalidPath import InvalidPath
@@ -8,7 +9,7 @@ from models.Resolution import ResolutionValues
 
 
 @pytest.fixture(scope="function", name="image_fetcher")
-def _image_fetcher() -> ImageFetcher:
+def _image_fetcher(client: FlaskClient) -> ImageFetcher:
     image_fetcher = ImageFetcher()
     return image_fetcher
 
@@ -18,29 +19,25 @@ class TestGetInternalPath:
         app.STATIC_DIR = './test'
         path = 'path'
 
-        with app.app_context():
-            assert image_fetcher.get_internal_path(path) == f"{app.STATIC_DIR}/{path}"
+        assert image_fetcher.get_internal_path(path) == f"{app.STATIC_DIR}/{path}"
 
     def test_strip_leading_slash(self, app: SamsiteFlask, image_fetcher: ImageFetcher) -> None:
         app.STATIC_DIR = './test'
         path = 'path'
 
-        with app.app_context():
-            assert image_fetcher.get_internal_path(f"/{path}") == f"{app.STATIC_DIR}/{path}"
+        assert image_fetcher.get_internal_path(f"/{path}") == f"{app.STATIC_DIR}/{path}"
 
     def test_strip_trailing_slash(self, app: SamsiteFlask, image_fetcher: ImageFetcher) -> None:
         app.STATIC_DIR = './test'
         path = 'path'
 
-        with app.app_context():
-            assert image_fetcher.get_internal_path(f"{path}/") == f"{app.STATIC_DIR}/{path}"
+        assert image_fetcher.get_internal_path(f"{path}/") == f"{app.STATIC_DIR}/{path}"
 
     def test_strip_dir_navigation(self, app: SamsiteFlask, image_fetcher: ImageFetcher) -> None:
         app.STATIC_DIR = './test'
         path = 'path'
 
-        with app.app_context():
-            assert image_fetcher.get_internal_path(f"../../../{path}") == f"{app.STATIC_DIR}/{path}"
+        assert image_fetcher.get_internal_path(f"../../../{path}") == f"{app.STATIC_DIR}/{path}"
 
 
 class TestGetResolutionPath:
