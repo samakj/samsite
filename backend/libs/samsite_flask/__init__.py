@@ -12,8 +12,8 @@ from samsite_flask.converters.int_set_converter import IntSetConverter
 from samsite_flask.converters.str_list_converter import StrListConverter
 from samsite_flask.converters.str_set_converter import StrSetConverter
 from samsite_flask.exceptions import APIError
-from samsite_flask.responses import JSONResponse
 from samsite_flask.requests import JSONRequest
+from samsite_flask.responses import JSONResponse
 from samsite_flask.routes import BLUEPRINT as DEFAULT_ROUTES_BLUEPRINT
 
 log = logging.getLogger(__name__)

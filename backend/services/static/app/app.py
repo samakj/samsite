@@ -1,7 +1,7 @@
 from flask_cors import CORS
-from samsite_flask import SamsiteFlask
 
 from cache import cache
+from samsite_flask import SamsiteFlask
 
 
 def create_app() -> SamsiteFlask:

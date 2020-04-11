@@ -1,6 +1,7 @@
 from collections import defaultdict
 
 from flask import Blueprint, current_app
+
 from samsite_flask.responses import JSONResponse
 
 BLUEPRINT = Blueprint("default_routes", __name__)
@@ -18,8 +19,7 @@ def route_map() -> JSONResponse:
 
     for method, method_routes in rules.items():
         rules[method] = sorted(
-            method_routes,
-            key=lambda method_route: method_route.split("/"),
+            method_routes, key=lambda method_route: method_route.split("/")
         )
 
     return JSONResponse(rules)

@@ -6,7 +6,7 @@ from PIL import Image
 
 from errors.InvalidPath import InvalidPath
 from errors.InvalidResolution import InvalidResolution
-from models.Resolution import ResolutionName, ResolutionMaxDimension
+from models.Resolution import ResolutionMaxDimension, ResolutionName
 
 
 class ImageFetcher:
