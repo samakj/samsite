@@ -22,7 +22,7 @@ class ImageFetcher:
                 raise InvalidPath("Invalid path to get resolution path from.")
 
             path_split[-2] = f"{path_split[-2]}/resized_images"
-            path_split[-1] = path_split[-1].replace(".", f"{resolution.lower()}.")
+            path_split[-1] = path_split[-1].replace(".", f".{resolution.lower()}.")
             path = "/".join(path_split)
 
         return path
