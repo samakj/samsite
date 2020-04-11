@@ -1,5 +1,6 @@
 import os
 import re
+from typing import Optional
 
 from flask import current_app
 from PIL import Image
@@ -57,5 +58,31 @@ class ImageFetcher:
 
             image.save(resized_path, image.format)
             image = Image.open(resized_path)
+
+        return image
+
+    @staticmethod
+    def fetch_image(path: str, resolution: Optional[str] = ResolutionName.RAW) -> Image:
+        internal_raw_path = ImageFetcher.get_internal_path(path=path)
+        internal_resized_path = ImageFetcher.get_resolution_path(
+            path=internal_raw_path,
+            resolution=resolution
+        )
+
+        image: Optional[Image] = None
+
+        try:
+            image = Image.open(internal_resized_path)
+        except IOError:
+            pass
+
+        if image is None and resolution == ResolutionName.RAW:
+            raise InvalidPath(f"Invalid image path: {path}")
+        if image is None:
+            image = ImageFetcher.resize_image(
+                raw_path=internal_raw_path,
+                resized_path=internal_resized_path,
+                resolution=resolution,
+            )
 
         return image
