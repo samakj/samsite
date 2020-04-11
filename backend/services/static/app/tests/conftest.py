@@ -12,4 +12,11 @@ def _app() -> SamsiteFlask:
 
 @pytest.fixture(scope="function", name="client")
 def _client(app: SamsiteFlask) -> FlaskClient:
-    return app.test_client()
+    client = app.test_client()
+
+    ctx = app.app_context()
+    ctx.push()
+
+    yield client
+
+    ctx.pop()
