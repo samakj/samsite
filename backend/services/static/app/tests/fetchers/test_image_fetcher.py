@@ -34,39 +34,34 @@ class TemporaryImageFile:
 
 
 class TestGetInternalPath:
+    path = "path"
+
+    @pytest.fixture(autouse=True)
+    def set_static_dir(self, app: SamsiteFlask) -> None:
+        app.STATIC_DIR = "./test"
+        yield
+
     def test_append_store_path(
         self, app: SamsiteFlask, image_fetcher: ImageFetcher
     ) -> None:
-        app.STATIC_DIR = "./test"
-        path = "path"
-
-        assert image_fetcher.get_internal_path(path) == f"{app.STATIC_DIR}/{path}"
+        assert image_fetcher.get_internal_path(self.path) == f"{app.STATIC_DIR}/{self.path}"
 
     def test_strip_leading_slash(
         self, app: SamsiteFlask, image_fetcher: ImageFetcher
     ) -> None:
-        app.STATIC_DIR = "./test"
-        path = "path"
-
-        assert image_fetcher.get_internal_path(f"/{path}") == f"{app.STATIC_DIR}/{path}"
+        assert image_fetcher.get_internal_path(f"/{self.path}") == f"{app.STATIC_DIR}/{self.path}"
 
     def test_strip_trailing_slash(
         self, app: SamsiteFlask, image_fetcher: ImageFetcher
     ) -> None:
-        app.STATIC_DIR = "./test"
-        path = "path"
-
-        assert image_fetcher.get_internal_path(f"{path}/") == f"{app.STATIC_DIR}/{path}"
+        assert image_fetcher.get_internal_path(f"{self.path}/") == f"{app.STATIC_DIR}/{self.path}"
 
     def test_strip_dir_navigation(
         self, app: SamsiteFlask, image_fetcher: ImageFetcher
     ) -> None:
-        app.STATIC_DIR = "./test"
-        path = "path"
-
         assert (
-            image_fetcher.get_internal_path(f"../../../{path}")
-            == f"{app.STATIC_DIR}/{path}"
+            image_fetcher.get_internal_path(f"../../../{self.path}")
+            == f"{app.STATIC_DIR}/{self.path}"
         )
 
 
