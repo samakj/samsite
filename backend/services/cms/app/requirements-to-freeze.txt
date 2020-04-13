@@ -1,0 +1,15 @@
+black
+fastjsonschema
+flake8
+flask
+flask-caching
+flask-cors
+gunicorn
+iso8601
+isort
+mypy
+pylint
+pytest
+redis
+requests
+sqlalchemy
