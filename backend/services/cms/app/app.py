@@ -7,6 +7,9 @@ from samsite_sqlalchemy import create_database
 
 def create_app() -> SamsiteFlask:
     app = SamsiteFlask(__name__)
+
+    app.config['SECRET_KEY'] = 'notsosecret'
+
     app.cors = CORS(app)
 
     app.db = create_database(

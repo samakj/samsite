@@ -2,6 +2,7 @@ black
 fastjsonschema
 flake8
 flask
+flask-admin
 flask-caching
 flask-cors
 gunicorn
