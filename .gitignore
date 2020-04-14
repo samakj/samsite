@@ -11,3 +11,6 @@ frontend/web/public/
 frontend/web/node_modules/
 frontend/web/.env
 *.DS_store
+
+# Service stuff
+**/db/data
