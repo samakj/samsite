@@ -3,6 +3,7 @@ from typing import Callable, List, Optional, Union
 from sqlalchemy.orm import Session
 
 from models.FrontpageStat import FrontpageStat
+from stores.queries.frontpage_stats import BACKUP_FRONTPAGE_STATS, LOAD_FRONTPAGE_STATS_FROM_BACKUP
 
 
 class FrontpageStatStore:
@@ -63,3 +64,9 @@ class FrontpageStatStore:
         session.delete(frontpage_stat)
 
         return frontpage_stat_id
+
+    def backup(self) -> None:
+        self.session_maker().execute(BACKUP_FRONTPAGE_STATS)
+
+    def load_from_backup(self) -> None:
+        self.session_maker().execute(LOAD_FRONTPAGE_STATS_FROM_BACKUP)
