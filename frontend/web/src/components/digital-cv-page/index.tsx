@@ -41,7 +41,7 @@ export const DigitalCvPage: React.FunctionComponent<DigitalCvPagePropsType> = ({
                     Runner up in the Mandles Prize for Hydrofoil Excellence for our Group Design
                     Project
                 </li>
-                <li>Lloyds Register …</li>
+                <li>Lloyds Register Vessel Design Competition Prize</li>
             </ul>
 
             <h3>Relevant Modules</h3>
