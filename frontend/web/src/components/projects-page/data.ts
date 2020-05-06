@@ -27,6 +27,7 @@ export const data: ProjectDataType[] = [
         ],
     },
     {
+        gitRepoId: '254667316',
         name: 'Flowervolution',
         state: 'IN DEV',
         description:
@@ -39,6 +40,7 @@ export const data: ProjectDataType[] = [
         ],
     },
     {
+        gitRepoId: '256488237',
         name: 'HAN (Home Automation Network)',
         state: 'IN DEV',
         description:
@@ -54,9 +56,9 @@ export const data: ProjectDataType[] = [
             'MQTT',
         ],
         todos: [
-            'Create MQTT server service.',
-            'Create device service.',
-            'Develop first device and test reporting to the server.',
+            'Deploy first component with reporting',
+            'Develop control systems',
+            'Create interface for viewing collected data and controlling the systems',
         ],
     },
     {
@@ -72,6 +74,7 @@ export const data: ProjectDataType[] = [
         ],
     },
     {
+        gitRepoId: '261787982',
         name: 'Directory explorer',
         state: 'COMPLETE',
         description:

@@ -42,3 +42,29 @@ export const fetchGitUserRepos = (username: string): FetchRequestType =>
         fetchGitUserReposResponseHandler,
         defaultErrorHandler,
     );
+
+export const fetchGitRepoResponseHandler = <ResponseObjectType, HandledResponseType>(
+    response: GitUserRepoResponseType,
+): StateObjectType<GitRepoStateType> => ({
+    [response.id]: {
+        id: response.id,
+        name: response.name,
+        fullName: response.full_name,
+        private: response.private,
+        url: response.html_url,
+        description: response.description,
+        commitsUrl: response.commits_url,
+        owner: {
+            username: response.owner.login,
+            id: response.owner.id,
+        },
+    },
+});
+
+export const fetchGitRepo = (id: string): FetchRequestType =>
+    generateFetchRequest<GitUserRepoResponseType, GitRepoStateType>(
+        `${apiRoot}/repositories/${id}`,
+        fetchGitReposStoreHandler.dispatchers,
+        fetchGitRepoResponseHandler,
+        defaultErrorHandler,
+    );
