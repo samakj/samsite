@@ -57,7 +57,7 @@ const InstagramMostRecent: React.FunctionComponent<IntagramMostRecentPropsType> 
                         <a href={post.permalink} target="_blank" key={post.id}>
                             <AsyncImage
                                 alt={post.caption}
-                                srcProgression={[post.mediaUrl]}
+                                srcProgression={[post.mediaType === 'VIDEO' ? post.thumbnailUrl : post.mediaUrl]}
                                 containerClass="most-recent-media-container"
                                 imageClass="most-recent-media"
                             />
