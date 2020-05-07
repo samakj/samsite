@@ -33,8 +33,8 @@ export const QuickInfo: React.FunctionComponent<QuickInfoPropsType> = ({}) => {
                         <div className="value">27 Countries, 4 Continents</div>
                     </div>
                     <div className="info">
-                        <div className="title">Lorem</div>
-                        <div className="value">Ipsum</div>
+                        <div className="title">Special Ability</div>
+                        <div className="value">Uselss facts for every situation</div>
                     </div>
                 </div>
 
