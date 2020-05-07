@@ -12,7 +12,7 @@ export const QuickInfo: React.FunctionComponent<QuickInfoPropsType> = ({}) => {
     return (
         <div className="quick-info">
             <AsyncImage
-                srcProgression={['/static/img/sam-on-a-camel.jpeg']}
+                srcProgression={['/static/img/sam-on-a-camel.jpg']}
                 containerClass="display-picture-container"
                 imageClass="display-picture"
                 alt="sam-on-a-camel"
