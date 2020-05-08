@@ -1,0 +1,169 @@
+image_id,url,priority,title,comment,locality_id
+1,"/travel/alleppey/1.jpg",3,"Kayaking in the  Alleppey Backwaters",null,1
+2,"/travel/alleppey/2.jpg",0,"Water Cow",null,1
+3,"/travel/alleppey/3.jpg",0,"Alleppey Waterside",null,1
+4,"/travel/alleppey/4.jpg",2,"Snake Boat Training","The snake boats are traditionally raced through the Kerala backwaters. With 100 rowers and others chanting and beating on the boats hull, its quite a spectacle to see.",1
+5,"/travel/alleppey/5.jpg",0,"Kayaking in the  Alleppey Backwaters",null,1
+6,"/travel/alleppey/6.jpg",1,"Kayaking in the  Alleppey Backwaters",null,1
+7,"/travel/anjuna/1.jpg",0,"Anjuna Beach",null,2
+8,"/travel/anjuna/2.jpg",0,"Sunset on Anjuna Beach",null,2
+9,"/travel/anjuna/3.jpg",0,"Beach Cows",null,2
+10,"/travel/arambol/1.jpeg",0,"Arambol Beach",null,3
+11,"/travel/arambol/2.jpeg",0,"Arambol Beach",null,3
+12,"/travel/arambol/3.jpeg",0,"Beachside Houses",null,3
+13,"/travel/arambol/4.jpeg",0,"Secret Beach Path","This path lead round the cliff to a secret beach that was hidden between two cliffs and only accessible by foot.",3
+14,"/travel/arambol/5.jpeg",0,null,null,3
+15,"/travel/arambol/6.jpeg",0,"Oasis At The Secret Beach",null,3
+16,"/travel/arambol/7.jpeg",0,"Secret Beach",null,3
+17,"/travel/arambol/8.jpeg",0,null,null,3
+18,"/travel/delhi/1.jpeg",0,"The Red Fort Entrance","The sheer size of this fort was impressive and very hard to get in a single shot.",4
+19,"/travel/delhi/2.jpeg",0,"Old Town Delhi","A mad hot pot of people, smells of spices and vibrant colours. Definitely not for the faint hearted!",4
+20,"/travel/delhi/3.jpeg",0,"India Gate",null,4
+21,"/travel/delhi/4.jpeg",0,"Isa Khan's Tomb",null,4
+22,"/travel/delhi/5.jpeg",0,null,null,4
+23,"/travel/delhi/6.jpeg",0,"Humayun's Tomb",null,4
+24,"/travel/delhi/7.jpeg",0,"Old Delhi Rooftop View","In the foreground is the minaret of one of the many Mosques throughout Delhi.",4
+25,"/travel/delhi/8.jpeg",0,"The Spice Markets Of Old Delhi",null,4
+26,"/travel/fulidhoo/1.jpeg",0,"The View As Sharks Circle Overhead",null,5
+27,"/travel/fulidhoo/2.jpeg",0,"Saying Hello To The Sharks",null,5
+28,"/travel/fulidhoo/3.jpeg",0,"The Sunset After Surfacing From An Evening Dive",null,5
+29,"/travel/fulidhoo/4.jpeg",0,"Feeding The Wild Stingrays",null,5
+30,"/travel/fulidhoo/5.jpeg",0,"Fulidhoo Pier",null,5
+31,"/travel/fulidhoo/6.jpeg",0,"Fulidhoo Beach",null,5
+32,"/travel/fulidhoo/7.jpeg",0,"Fulidhoo Beach",null,5
+33,"/travel/fulidhoo/8.jpeg",0,"The Classic Maldives Shot",null,5
+34,"/travel/fulidhoo/9.jpeg",0,"Fulidhoo Highstreet",null,5
+35,"/travel/jaipur/1.jpeg",0,"The View Down On The Jal Mahal And Surrounding Lake",null,7
+36,"/travel/jaipur/2.jpeg",0,"Jal Mahal",null,7
+37,"/travel/jaipur/3.jpeg",0,"The Amber Fort Gardens",null,7
+38,"/travel/jaipur/4.jpeg",0,"The Amber Fort",null,7
+39,"/travel/jaipur/5.jpeg",0,"Monkeys At The Amber Fort",null,7
+40,"/travel/jaipur/6.jpeg",0,"The Amber Fort At Night",null,7
+41,"/travel/jaipur/7.jpeg",0,"Hawa Mahal",null,7
+42,"/travel/jaipur/8.jpeg",0,"City Palace Guards",null,7
+43,"/travel/jaipur/9.jpeg",0,"Monkey Headspace",null,7
+44,"/travel/jaipur/10.jpeg",0,"Jantar Mantar",null,7
+45,"/travel/jaisalmer/1.jpeg",0,"Desert Village",null,8
+46,"/travel/jaisalmer/2.jpeg",0,null,null,8
+47,"/travel/jaisalmer/3.jpeg",0,"Village Friends",null,8
+48,"/travel/jaisalmer/4.jpeg",0,"Smiles and Colour",null,8
+49,"/travel/jaisalmer/5.jpeg",0,"Happy Camel",null,8
+50,"/travel/jaisalmer/6.jpeg",0,"Staring Down Over Jaisalmer",null,8
+51,"/travel/jaisalmer/7.jpeg",0,"Jasailmer Fort And The City Below",null,8
+52,"/travel/jaisalmer/8.jpeg",0,"Jasialmer Fort Entrance",null,8
+53,"/travel/jodhpur/1.jpeg",0,"Mehrangarh Fort",null,9
+54,"/travel/jodhpur/2.jpeg",0,"Smiles and Colour",null,9
+55,"/travel/jodhpur/3.jpeg",0,"Mehrangarh Fort",null,9
+56,"/travel/jodhpur/4.jpeg",0,"Blue City",null,9
+57,"/travel/jodhpur/5.jpeg",0,"Doing The Chores",null,9
+58,"/travel/jodhpur/6.jpeg",0,"Blue City",null,9
+59,"/travel/jodhpur/7.jpeg",0,"Blue City",null,9
+60,"/travel/jodhpur/8.jpeg",0,"Toorji Ka Jhalra Bavdi",null,9
+61,"/travel/kochi/1.jpeg",0,"Jew Town",null,10
+62,"/travel/kochi/2.jpeg",0,"Evening Fishing",null,10
+63,"/travel/kochi/3.jpeg",0,"Industrial Fishing",null,10
+64,"/travel/kochi/4.jpeg",0,"Kochi Street Art",null,10
+65,"/travel/kochi/5.jpeg",0,null,null,10
+66,"/travel/kochi/6.jpeg",0,null,null,10
+67,"/travel/morjim/1.jpeg",0,null,null,11
+68,"/travel/morjim/2.jpeg",0,null,null,11
+69,"/travel/morjim/3.jpeg",0,"Morjim Beach",null,11
+70,"/travel/morjim/4.jpeg",0,"Morjim Beach",null,11
+71,"/travel/morjim/5.jpeg",0,"Morjim Beach",null,11
+72,"/travel/morjim/6.jpeg",0,"Morjim Beach",null,11
+73,"/travel/morjim/7.jpeg",0,null,null,11
+74,"/travel/munnar/1.jpeg",0,"Kalrippayattu (Traditional Marial Art of Kerala)",null,12
+75,"/travel/munnar/2.jpeg",0,"Kalrippayattu (Traditional Marial Art of Kerala)",null,12
+76,"/travel/munnar/3.jpeg",0,"Kalrippayattu (Traditional Marial Art of Kerala)",null,12
+77,"/travel/munnar/4.jpeg",0,"Kalrippayattu (Traditional Marial Art of Kerala)",null,12
+78,"/travel/munnar/5.jpeg",0,"Eravikulam National Park",null,12
+79,"/travel/munnar/6.jpeg",0,"Munnar Tea Plantations",null,12
+80,"/travel/munnar/7.jpeg",0,null,null,12
+81,"/travel/munnar/8.jpeg",0,"Munnar Tea Plantations",null,12
+82,"/travel/periyar-national-park/1.jpeg",0,null,null,13
+83,"/travel/periyar-national-park/2.jpeg",0,null,null,13
+84,"/travel/periyar-national-park/3.jpeg",0,null,null,13
+85,"/travel/periyar-national-park/4.jpeg",0,null,null,13
+86,"/travel/periyar-national-park/5.jpeg",0,null,null,13
+87,"/travel/pushkar/1.jpeg",0,"Street-Level View Of The Savitri Mata Temple",null,14
+88,"/travel/pushkar/2.jpeg",0,"The Start Of The 1000 Step Climb",null,14
+89,"/travel/pushkar/3.jpeg",0,"The View From The Savitri Mata Temple",null,14
+90,"/travel/pushkar/4.jpeg",0,"Pushkar Lake",null,14
+91,"/travel/pushkar/5.jpeg",0,"Pushkar Lake",null,14
+92,"/travel/taipei/1.jpg",0,"Yinhe Cave","We found this temple, hidden behind a small waterfall, out of sheer luck whilst following a hiking trail.",15
+93,"/travel/taipei/2.jpg",0,"Zhinan Temple",null,15
+94,"/travel/taipei/3.jpg",0,"Zhinan Temple",null,15
+95,"/travel/taipei/4.jpg",0,"Zhinan Temple","Placed up in the hills surrounding Taipei, with the fog blowing over, this temple really looked mystical and mysterious.",15
+96,"/travel/taipei/5.jpg",0,"Shilin Night Market",null,15
+97,"/travel/taipei/6.jpg",0,"Lungshan Temple",null,15
+98,"/travel/taipei/7.jpg",0,"National Chiang Kai-shek Memorial Hall",null,15
+99,"/travel/taipei/8.jpg",0,"Taipei Skyline From Elephant Mountain",null,15
+100,"/travel/thulusdhoo/1.jpeg",0,null,null,16
+101,"/travel/thulusdhoo/2.jpeg",0,null,null,16
+102,"/travel/thulusdhoo/3.jpeg",0,null,null,16
+103,"/travel/thulusdhoo/4.jpeg",0,null,null,16
+104,"/travel/thulusdhoo/5.jpeg",0,null,null,16
+105,"/travel/thulusdhoo/6.jpeg",0,null,null,16
+106,"/travel/thulusdhoo/7.jpeg",0,null,null,16
+107,"/travel/thulusdhoo/8.jpeg",0,null,null,16
+108,"/travel/thulusdhoo/9.jpeg",0,"Thulusdhoo Fishing Pier",null,16
+109,"/travel/udaipur/1.jpeg",0,"Dharohar Folk Dance",null,17
+110,"/travel/udaipur/2.jpeg",0,"Dharohar Folk Dance",null,17
+111,"/travel/udaipur/3.jpeg",0,"Dharohar Folk Dance",null,17
+112,"/travel/udaipur/4.jpeg",0,null,null,17
+113,"/travel/udaipur/5.jpeg",0,"Udaipur City Palace",null,17
+114,"/travel/udaipur/6.jpeg",0,"Udaipur City Palace",null,17
+115,"/travel/udaipur/7.jpeg",0,"Udaipur City Palace",null,17
+116,"/travel/taroko-national-park/1.jpg",0,null,null,6
+117,"/travel/taroko-national-park/2.jpg",0,null,null,6
+118,"/travel/taroko-national-park/3.jpg",0,null,null,6
+119,"/travel/taroko-national-park/4.jpg",0,null,null,6
+120,"/travel/taroko-national-park/5.jpg",0,null,null,6
+121,"/travel/taroko-national-park/6.jpg",0,null,null,6
+122,"/travel/taroko-national-park/7.jpg",0,null,null,6
+123,"/travel/taroko-national-park/8.jpg",0,null,null,6
+124,"/travel/dulan/1.jpg",0,null,null,18
+125,"/travel/dulan/2.jpg",0,null,null,18
+126,"/travel/dulan/3.jpg",0,null,null,18
+127,"/travel/dulan/4.jpg",0,null,null,18
+128,"/travel/dulan/5.jpg",0,null,null,18
+129,"/travel/kaohsiung/1.jpg",0,null,null,19
+130,"/travel/kaohsiung/2.jpg",0,null,null,19
+131,"/travel/kaohsiung/3.jpg",0,null,null,19
+132,"/travel/kaohsiung/4.jpg",0,null,null,19
+133,"/travel/kaohsiung/5.jpg",0,null,null,19
+134,"/travel/kaohsiung/6.jpg",0,null,null,19
+135,"/travel/kaohsiung/7.jpg",0,null,null,19
+136,"/travel/kaohsiung/8.jpg",0,null,null,19
+137,"/travel/kaohsiung/9.jpg",0,null,null,19
+138,"/travel/kaohsiung/10.jpg",0,null,null,19
+139,"/travel/tainan/1.jpg",0,null,null,20
+140,"/travel/tainan/2.jpg",0,null,null,20
+141,"/travel/tainan/3.jpg",0,null,null,20
+142,"/travel/tainan/4.jpg",0,null,null,20
+143,"/travel/tainan/5.jpg",0,null,null,20
+144,"/travel/tainan/6.jpg",0,null,null,20
+145,"/travel/tainan/7.jpg",0,null,null,20
+146,"/travel/taichung/1.jpg",0,null,null,21
+147,"/travel/taichung/2.jpg",0,null,null,21
+148,"/travel/taichung/3.jpg",0,null,null,21
+149,"/travel/taichung/4.jpg",0,null,null,21
+150,"/travel/taichung/5.jpg",0,null,null,21
+151,"/travel/taichung/6.jpg",0,null,null,21
+152,"/travel/taichung/7.jpg",0,null,null,21
+153,"/travel/taichung/8.jpg",0,null,null,21
+154,"/travel/taichung/9.jpg",0,null,null,21
+155,"/travel/malapascua/1.jpg",0,null,null,22
+156,"/travel/malapascua/2.jpg",0,null,null,22
+157,"/travel/malapascua/3.jpg",0,null,null,22
+158,"/travel/malapascua/4.jpg",0,null,null,22
+159,"/travel/malapascua/5.jpg",0,null,null,22
+160,"/travel/malapascua/6.jpg",0,null,null,22
+161,"/travel/cebu/1.jpg",0,"Freediving in the sardine run",null,23
+161,"/travel/cebu/2.jpg",0,"Freediving in the sardine run",null,23
+161,"/travel/cebu/3.jpg",0,"Osmeña peak",null,23
+161,"/travel/cebu/4.jpg",0,null,null,23
+161,"/travel/cebu/5.jpg",0,null,null,23
+161,"/travel/cebu/6.jpg",0,null,null,23
+161,"/travel/cebu/7.jpg",0,null,null,23
+161,"/travel/cebu/8.jpg",0,null,null,23
