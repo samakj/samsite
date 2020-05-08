@@ -8,6 +8,7 @@ import { fetchGitCommitsStoreHandler } from '@samsite/store/handlers/git/commits
 import { fetchInstagramUserStoreHandler } from '@samsite/store/handlers/instagram/users';
 import { fetchInstagramMediaStoreHandler } from '@samsite/store/handlers/instagram/media';
 import { fetchTravelLocalityStoreHandler } from '@samsite/store/handlers/travel/localities';
+import { fetchTravelCountryStoreHandler } from '@samsite/store/handlers/travel/countries';
 
 export const loadCombinedReducers = (history: History): Reducer =>
     combineReducers({
@@ -21,5 +22,6 @@ export const loadCombinedReducers = (history: History): Reducer =>
         [fetchInstagramUserStoreHandler.storeKey]: fetchInstagramUserStoreHandler.reducer,
         [fetchInstagramMediaStoreHandler.storeKey]: fetchInstagramMediaStoreHandler.reducer,
 
+        [fetchTravelCountryStoreHandler.storeKey]: fetchTravelCountryStoreHandler.reducer,
         [fetchTravelLocalityStoreHandler.storeKey]: fetchTravelLocalityStoreHandler.reducer,
     });
