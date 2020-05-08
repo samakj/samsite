@@ -6,7 +6,7 @@ import { Map } from '@samsite/components/travel-page/map';
 
 export const TravelPage: React.FunctionComponent<TravelPagePropsType> = ({}) => {
     return (
-        <main className="travel-page page-width-wrapper">
+        <main className="travel-page">
             <Map />
         </main>
     );
