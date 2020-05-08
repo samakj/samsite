@@ -1,10 +1,10 @@
-import React, { lazy } from 'react';
+import React from 'react';
 
 import { RouteType } from '@samsite/routing/types';
 import { PersonalPage } from '@samsite/components/personal-page';
 import { DigitalCvPage } from '@samsite/components/digital-cv-page';
-import { InDevPage } from '@samsite/components/in-dev-page';
 import { ProjectsPage } from '@samsite/components/projects-page';
+import { TravelPage } from '@samsite/components/travel-page';
 
 export const routes: RouteType[] = [
     {
@@ -30,7 +30,7 @@ export const routes: RouteType[] = [
 
     {
         path: '/personal/travel/',
-        component: InDevPage,
+        component: TravelPage,
         exact: true,
     },
 ];
