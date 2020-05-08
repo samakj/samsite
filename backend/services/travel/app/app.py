@@ -5,6 +5,7 @@ from samsite_flask import SamsiteFlask
 from samsite_sqlalchemy import create_database
 
 from stores.locality_store import LocalityStore
+from routes.v0.locality_routes import LOCALITIES_V0_BLUEPRINT
 
 
 def create_app() -> SamsiteFlask:
@@ -23,6 +24,8 @@ def create_app() -> SamsiteFlask:
     )
 
     app.locality_store = LocalityStore(db=app.db)
+
+    app.register_blueprint(LOCALITIES_V0_BLUEPRINT, url_prefix="/v0")
 
     return app
 
