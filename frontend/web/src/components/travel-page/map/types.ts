@@ -4,7 +4,7 @@ export interface MapPropsType {
     disableDefaultUI?: google.maps.MapOptions["disableDefaultUI"],
     backgroundColor?: google.maps.MapOptions["backgroundColor"],
     mapStyles?: google.maps.MapOptions["styles"],
-    initialBounds?: [LatLngObjectType, LatLngObjectType],
+    bounds?: [LatLngObjectType, LatLngObjectType],
 }
 
 export interface LatLngObjectType {

@@ -17,7 +17,7 @@ const Map: React.FunctionComponent<MapPropsType> = ({
     disableDefaultUI,
     backgroundColor,
     mapStyles,
-    initialBounds,
+    bounds,
 }) => {
     const [scriptLoaded, updateScriptLoaded] = useState(!!(isClientSide() && window.google && window.google.maps));
     const [googleMapObject, updateGoogleMapObject] = useState(null);
@@ -41,8 +41,22 @@ const Map: React.FunctionComponent<MapPropsType> = ({
     );
 
     useEffect(
-        initGoogleMapObject(containerRef, initialBounds, mapOptions, scriptLoaded, updateGoogleMapObject),
+        initGoogleMapObject(containerRef, bounds, mapOptions, scriptLoaded, updateGoogleMapObject),
         [scriptLoaded],
+    );
+
+    useEffect(
+        () => {
+            if (bounds && googleMapObject) {
+                googleMapObject.fitBounds(
+                    new google.maps.LatLngBounds(
+                        new google.maps.LatLng(bounds[0].lat, bounds[0].lng),
+                        new google.maps.LatLng(bounds[1].lat, bounds[1].lng),
+                    ),
+                );
+            }
+        },
+        [bounds, googleMapObject],
     );
 
     return (
@@ -60,7 +74,7 @@ Map.defaultProps = {
     disableDefaultUI: true,
     backgroundColor: 'none',
     mapStyles: defaultMapStyles,
-    initialBounds: [
+    bounds: [
         { lat: 70, lng: -180 },
         { lat: -55, lng: 180 },
     ],
