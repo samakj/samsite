@@ -1,4 +1,4 @@
-FROM han-postgres:latest
+FROM samsite-postgres:latest
 
 COPY ./migrations/ /docker-entrypoint-initdb.d/
 COPY ./data/ /var/lib/postgresql/data
