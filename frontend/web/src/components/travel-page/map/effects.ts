@@ -1,5 +1,6 @@
 import Map = google.maps.Map;
 import { RefObject } from 'react';
+import { LatLngObjectType } from '@samsite/components/travel-page/map/types';
 
 export const loadScriptEffectGenerator = (
     src: string,
@@ -18,13 +19,20 @@ export const loadScriptEffectGenerator = (
 
 export const initGoogleMapObject = (
     containerRef: RefObject<HTMLDivElement>,
+    initialBounds: [LatLngObjectType, LatLngObjectType],
     mapOptions: google.maps.MapOptions,
     scriptLoaded: boolean,
     updateGoogleMapObject: (value: Map) => void,
 ): () => void => (): void => {
     if (scriptLoaded) {
-        updateGoogleMapObject(
-            new window.google.maps.Map(containerRef.current, mapOptions),
+        const googleMapsObject = new window.google.maps.Map(containerRef.current, mapOptions);
+
+        const bounds = new google.maps.LatLngBounds(
+            new google.maps.LatLng(initialBounds[0].lat, initialBounds[0].lng),
+            new google.maps.LatLng(initialBounds[1].lat, initialBounds[1].lng),
         );
+
+        googleMapsObject.fitBounds(bounds);
+        updateGoogleMapObject(googleMapsObject);
     }
 };
