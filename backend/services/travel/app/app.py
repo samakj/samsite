@@ -4,6 +4,8 @@ from flask_cors import CORS
 from samsite_flask import SamsiteFlask
 from samsite_sqlalchemy import create_database
 
+from stores.locality_store import LocalityStore
+
 
 def create_app() -> SamsiteFlask:
     app = SamsiteFlask(__name__)
@@ -19,6 +21,8 @@ def create_app() -> SamsiteFlask:
         port=os.environ["DB_PORT"],
         user=os.environ["DB_USER"],
     )
+
+    app.locality_store = LocalityStore(db=app.db)
 
     return app
 
