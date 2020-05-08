@@ -11,6 +11,7 @@ import templateParameters from '@samsite/page-templates/template-parameters';
 declare global {
     interface Window {
         __PRELOADED_STATE__: object;
+        google: { maps: object };
     }
 }
 
