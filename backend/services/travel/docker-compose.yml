@@ -5,7 +5,7 @@ services:
     container_name: travel_app
     volumes:
       - ./app:/app
-      - ../../libs/python:/libs
+      - ../../libs:/libs
     environment:
       - DB_HOST=travel_db
       - DB_NAME=${DB_NAME}
