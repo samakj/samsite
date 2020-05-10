@@ -12,7 +12,7 @@ import { fetchTravelCountries } from '@samsite/fetchers/travel/countries';
 import { getAllTravelCountriesSelector } from '@samsite/selectors/travel/countries';
 import { TravelCountryStateType, TravelLocalityStateType } from '@samsite/store/handlers/travel/types';
 import { MapMarkerType } from '@samsite/components/travel-page/map/types';
-import { AsyncImage } from '@samsite/components/ui/async-image';
+import { CountryMarker } from '@samsite/components/travel-page/country-marker';
 
 const BOUND_PADDING = 2;
 
@@ -66,11 +66,7 @@ const DumbTravelPage: React.FunctionComponent<TravelPagePropsType> = ({
 
                         countryMarkers.push({
                             latLng: [country.latitude, country.longitude],
-                            component: <AsyncImage
-                                alt={country.name}
-                                srcProgression={[country.flag]}
-                                containerClass="country-marker"
-                            />,
+                            component: <CountryMarker country={country} />,
                             key: country.countryCode,
                         });
                     },

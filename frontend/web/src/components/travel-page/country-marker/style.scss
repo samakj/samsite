@@ -1,0 +1,45 @@
+@import '../../styles/colours';
+@import '../../styles/properties';
+@import '../../styles/variables';
+
+$marker-padding: 0.25rem;
+$flag-size: 2rem;
+$title-size: 8rem;
+
+.country-marker {
+    position: relative;
+    width: #{$flag-size + 2 * $marker-padding};
+    padding: $marker-padding;
+
+    display: grid;
+    grid-template-columns: $flag-size $title-size;
+    grid-template-areas: "flag title";
+    grid-column-gap: $marker-padding;
+    align-items: center;
+
+    transform: translate(-50%, -50%);
+    background-color: $off-black;
+    transition: width 300ms;
+    overflow: hidden;
+    z-index: 1;
+    border: $dark-grey solid $one-px;
+
+    &.-full {
+        width: #{$flag-size + $title-size + 3 * $marker-padding};
+        z-index: 9;
+    }
+
+    .country-marker-image-container {
+        grid-area: flag;
+
+        height: 100%;
+    }
+
+    .country-title {
+        grid-area: title;
+
+        text-align: center;
+        font-size: #{ $flag-size - 4 * $marker-padding };
+        font-weight: $bold;
+    }
+}
