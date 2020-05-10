@@ -4,7 +4,11 @@ import '@samsite/components/travel-page/map/style.scss';
 import { MapPropsType } from '@samsite/components/travel-page/map/types';
 import { defaultMapStyles } from '@samsite/components/travel-page/map/mapStyle';
 import { isClientSide } from '@samsite/utils/render-side';
-import { initGoogleMapObject, loadScriptEffectGenerator } from '@samsite/components/travel-page/map/effects';
+import {
+    createMapMarkersGenerator,
+    initGoogleMapObject,
+    loadScriptEffectGenerator
+} from '@samsite/components/travel-page/map/effects';
 
 const apiBaseUrl = 'https://maps.googleapis.com/maps/api/js';
 const apiKey = 'AIzaSyCeu7ked2XnDpbUUhJmB3Y4qN_dlZNDEew';
@@ -22,6 +26,7 @@ const Map: React.FunctionComponent<MapPropsType> = ({
 }) => {
     const [scriptLoaded, updateScriptLoaded] = useState(!!(isClientSide() && window.google && window.google.maps));
     const [googleMapObject, updateGoogleMapObject] = useState(null);
+    const [markers, updateMarkers] = useState(null);
     const containerRef = useRef(null);
     const mapOptions = {
         zoom,
@@ -58,6 +63,11 @@ const Map: React.FunctionComponent<MapPropsType> = ({
             }
         },
         [bounds, googleMapObject],
+    );
+
+    useEffect(
+        createMapMarkersGenerator(googleMapObject, countries, updateMarkers),
+        [googleMapObject && countries && Object.keys(countries).length]
     );
 
     return (
