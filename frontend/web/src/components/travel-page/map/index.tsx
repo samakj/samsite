@@ -18,6 +18,7 @@ const Map: React.FunctionComponent<MapPropsType> = ({
     backgroundColor,
     mapStyles,
     bounds,
+    countries,
 }) => {
     const [scriptLoaded, updateScriptLoaded] = useState(!!(isClientSide() && window.google && window.google.maps));
     const [googleMapObject, updateGoogleMapObject] = useState(null);

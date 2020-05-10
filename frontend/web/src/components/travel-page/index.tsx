@@ -73,7 +73,7 @@ const DumbTravelPage: React.FunctionComponent<TravelPagePropsType> = ({
 
     return (
         <main className="travel-page">
-            <Map bounds={bounds} />
+            <Map bounds={bounds} countries={countries} />
         </main>
     );
 };
