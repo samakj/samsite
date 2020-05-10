@@ -45,7 +45,7 @@ export const defaultMapStyles: google.maps.MapTypeStyle[] = [
         elementType: 'labels.text.fill',
         stylers: [
             {
-                color: '#9e9e9e',
+                visibility: 'off',
             },
         ],
     },
