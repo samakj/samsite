@@ -5,7 +5,8 @@ import { MapMarkerType, MapPropsType } from '@samsite/components/travel-page/map
 import { defaultMapStyles } from '@samsite/components/travel-page/map/mapStyle';
 import { isClientSide } from '@samsite/utils/render-side';
 import {
-    initGoogleMapObject,
+    fitNewBoundsGenerator,
+    initGoogleMapObjectGenerator,
     loadScriptEffectGenerator,
 } from '@samsite/components/travel-page/map/effects';
 import { ComponentMarker } from '@samsite/components/travel-page/map/component-marker';
@@ -48,21 +49,12 @@ const Map: React.FunctionComponent<MapPropsType> = ({
     );
 
     useEffect(
-        initGoogleMapObject(containerRef, bounds, mapOptions, scriptLoaded, updateGoogleMapObject),
+        initGoogleMapObjectGenerator(containerRef, bounds, mapOptions, scriptLoaded, updateGoogleMapObject),
         [scriptLoaded],
     );
 
     useEffect(
-        () => {
-            if (bounds && googleMapObject) {
-                googleMapObject.fitBounds(
-                    new google.maps.LatLngBounds(
-                        new google.maps.LatLng(bounds[0].lat, bounds[0].lng),
-                        new google.maps.LatLng(bounds[1].lat, bounds[1].lng),
-                    ),
-                );
-            }
-        },
+        fitNewBoundsGenerator(bounds, googleMapObject),
         [bounds, googleMapObject],
     );
 
