@@ -11,6 +11,8 @@ import { getAllTravelLocalitiesSelector } from '@samsite/selectors/travel/locali
 import { fetchTravelCountries } from '@samsite/fetchers/travel/countries';
 import { getAllTravelCountriesSelector } from '@samsite/selectors/travel/countries';
 import { TravelCountryStateType, TravelLocalityStateType } from '@samsite/store/handlers/travel/types';
+import { MapMarkerType } from '@samsite/components/travel-page/map/types';
+import { AsyncImage } from '@samsite/components/ui/async-image';
 
 const BOUND_PADDING = 2;
 
@@ -21,6 +23,7 @@ const DumbTravelPage: React.FunctionComponent<TravelPagePropsType> = ({
     onFetchTravelCountries,
 }) => {
     const [bounds, updateBounds] = useState(undefined);
+    const [markers, updateMarkers] = useState(null);
 
     useEffect(
         () => {
@@ -45,6 +48,7 @@ const DumbTravelPage: React.FunctionComponent<TravelPagePropsType> = ({
     useEffect(
         () => {
             if (countries && Object.keys(countries).length) {
+                const countryMarkers: MapMarkerType[] = [];
                 const bounds: {
                     lat: { min: number, max: number },
                     lng: { min: number, max: number },
@@ -59,6 +63,16 @@ const DumbTravelPage: React.FunctionComponent<TravelPagePropsType> = ({
                         if (!bounds.lat.max || country.latitude > bounds.lat.max) bounds.lat.max = country.latitude;
                         if (!bounds.lng.min || country.longitude < bounds.lng.min) bounds.lng.min = country.longitude;
                         if (!bounds.lng.max || country.longitude > bounds.lng.max) bounds.lng.max = country.longitude;
+
+                        countryMarkers.push({
+                            latLng: [country.latitude, country.longitude],
+                            component: <AsyncImage
+                                alt={country.name}
+                                srcProgression={[country.flag]}
+                                containerClass="country-marker"
+                            />,
+                            key: country.countryCode,
+                        });
                     },
                 );
 
@@ -66,6 +80,7 @@ const DumbTravelPage: React.FunctionComponent<TravelPagePropsType> = ({
                     { lat: bounds.lat.max + BOUND_PADDING, lng: bounds.lng.min - BOUND_PADDING },
                     { lat: bounds.lat.min - BOUND_PADDING, lng: bounds.lng.max + BOUND_PADDING },
                 ]);
+                updateMarkers(countryMarkers);
             }
         },
         [countries && Object.keys(countries).length],
@@ -73,7 +88,11 @@ const DumbTravelPage: React.FunctionComponent<TravelPagePropsType> = ({
 
     return (
         <main className="travel-page">
-            <Map bounds={bounds} countries={countries} />
+            <Map
+                bounds={bounds}
+                countries={countries}
+                markers={markers}
+            />
         </main>
     );
 };

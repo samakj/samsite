@@ -1,14 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 import '@samsite/components/travel-page/map/style.scss';
-import { MapPropsType } from '@samsite/components/travel-page/map/types';
+import { MapMarkerType, MapPropsType } from '@samsite/components/travel-page/map/types';
 import { defaultMapStyles } from '@samsite/components/travel-page/map/mapStyle';
 import { isClientSide } from '@samsite/utils/render-side';
 import {
-    createMapMarkersGenerator,
     initGoogleMapObject,
-    loadScriptEffectGenerator
+    loadScriptEffectGenerator,
 } from '@samsite/components/travel-page/map/effects';
+import { ComponentMarker } from '@samsite/components/travel-page/map/component-marker';
 
 const apiBaseUrl = 'https://maps.googleapis.com/maps/api/js';
 const apiKey = 'AIzaSyCeu7ked2XnDpbUUhJmB3Y4qN_dlZNDEew';
@@ -22,11 +22,12 @@ const Map: React.FunctionComponent<MapPropsType> = ({
     backgroundColor,
     mapStyles,
     bounds,
-    countries,
+    markers,
 }) => {
     const [scriptLoaded, updateScriptLoaded] = useState(!!(isClientSide() && window.google && window.google.maps));
     const [googleMapObject, updateGoogleMapObject] = useState(null);
-    const [markers, updateMarkers] = useState(null);
+    const [mutatedMarkers, updateMutatedMarkers] = useState(null);
+
     const containerRef = useRef(null);
     const mapOptions = {
         zoom,
@@ -66,13 +67,30 @@ const Map: React.FunctionComponent<MapPropsType> = ({
     );
 
     useEffect(
-        createMapMarkersGenerator(googleMapObject, countries, updateMarkers),
-        [googleMapObject && countries && Object.keys(countries).length]
+        () => {
+            if (googleMapObject && markers && markers.length) {
+                updateMutatedMarkers(
+                    markers.map(
+                        (marker: MapMarkerType): JSX.Element => (
+                            <ComponentMarker latLng={marker.latLng} map={googleMapObject} key={marker.key}>
+                                { marker.component }
+                            </ComponentMarker>
+                        ),
+                    ),
+                );
+            }
+        },
+        [googleMapObject && markers && markers.length],
     );
 
     return (
-        <div className="map-container" ref={ containerRef }>
-            <p>Script load state: { `${scriptLoaded}` }</p>
+        <div className="map-outer-container">
+            <div className="map-container" ref={ containerRef }>
+                <p>Script load state: { `${scriptLoaded}` }</p>
+            </div>
+            <div className="component-markers">
+                { mutatedMarkers }
+            </div>
         </div>
     );
 };
