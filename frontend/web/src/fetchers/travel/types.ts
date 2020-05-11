@@ -43,8 +43,8 @@ export interface TravelLocalityResponseType {
     locality_id: number;
     name: string;
     country_code: string;
-    latitude: number;
-    longitude: number;
+    latitude: string;
+    longitude: string;
     gmaps_place_id: string;
 }
 

@@ -20,8 +20,8 @@ export const fetchLocalityResponseHandler = <ResponseObjectType, HandledResponse
         localityId: response.locality.locality_id,
         name: response.locality.name,
         countryCode: response.locality.country_code,
-        latitude: response.locality.latitude,
-        longitude: response.locality.longitude,
+        latitude: parseFloat(response.locality.latitude),
+        longitude: parseFloat(response.locality.longitude),
         gmapsPlaceId: response.locality.gmaps_place_id,
     },
 });
@@ -48,8 +48,8 @@ export const fetchLocalitiesResponseHandler = <ResponseObjectType, HandledRespon
                 localityId: locality.locality_id,
                 name: locality.name,
                 countryCode: locality.country_code,
-                latitude: locality.latitude,
-                longitude: locality.longitude,
+                latitude: parseFloat(locality.latitude),
+                longitude: parseFloat(locality.longitude),
                 gmapsPlaceId: locality.gmaps_place_id,
             };
             return acc;
