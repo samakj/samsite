@@ -29,7 +29,8 @@ const Map: React.FunctionComponent<MapPropsType> = ({
     const [googleMapObject, updateGoogleMapObject] = useState(null);
     const [mutatedMarkers, updateMutatedMarkers] = useState(null);
 
-    const containerRef = useRef(null);
+    const mapContainerRef = useRef(null);
+    const markerContainerRef = useRef(null);
     const mapOptions = {
         zoom,
         center,
@@ -49,7 +50,7 @@ const Map: React.FunctionComponent<MapPropsType> = ({
     );
 
     useEffect(
-        initGoogleMapObjectGenerator(containerRef, bounds, mapOptions, scriptLoaded, updateGoogleMapObject),
+        initGoogleMapObjectGenerator(mapContainerRef, bounds, mapOptions, scriptLoaded, updateGoogleMapObject),
         [scriptLoaded],
     );
 
@@ -60,11 +61,16 @@ const Map: React.FunctionComponent<MapPropsType> = ({
 
     useEffect(
         () => {
-            if (googleMapObject && markers && markers.length) {
+            if (googleMapObject && markerContainerRef && markers && markers.length) {
                 updateMutatedMarkers(
                     markers.map(
                         (marker: MapMarkerType): JSX.Element => (
-                            <ComponentMarker latLng={marker.latLng} map={googleMapObject} key={marker.key}>
+                            <ComponentMarker
+                                latLng={marker.latLng}
+                                map={googleMapObject}
+                                parentRef={markerContainerRef}
+                                key={marker.key}
+                            >
                                 { marker.component }
                             </ComponentMarker>
                         ),
@@ -72,15 +78,15 @@ const Map: React.FunctionComponent<MapPropsType> = ({
                 );
             }
         },
-        [googleMapObject && markers && markers.length],
+        [googleMapObject && markerContainerRef && markers && markers.length],
     );
 
     return (
         <div className="map-outer-container">
-            <div className="map-container" ref={ containerRef }>
+            <div className="map-container" ref={mapContainerRef}>
                 <p>Script load state: { `${scriptLoaded}` }</p>
             </div>
-            <div className="component-markers">
+            <div className="component-markers" ref={markerContainerRef}>
                 { mutatedMarkers }
             </div>
         </div>

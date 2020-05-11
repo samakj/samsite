@@ -1,0 +1,25 @@
+@import '../../styles/colours';
+@import '../../styles/properties';
+@import '../../styles/variables';
+
+$marker-padding: 0.25rem;
+$title-size: 8rem;
+
+.locality-marker {
+    position: relative;
+    width: #{$title-size + 2 * $marker-padding};
+    padding: $marker-padding;
+
+    transform: translate(-50%, -50%);
+    background-color: $off-black;
+    overflow: hidden;
+    z-index: 1;
+    border: $dark-grey solid $one-px;
+
+    .locality-title {
+        text-align: center;
+        font-size: 0.875rem;
+        text-transform: uppercase;
+        font-weight: $bold;
+    }
+}

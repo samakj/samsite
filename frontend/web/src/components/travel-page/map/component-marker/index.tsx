@@ -9,12 +9,15 @@ import {
 export const ComponentMarker: React.FunctionComponent<ComponentMarkerPropsType> = ({
     latLng,
     map,
+    parentRef,
     children,
 }) => {
     if (!map) return null;
 
     const [overlayView, updateOverlayView] = useState(null);
     const ref = useRef(null);
+
+    useEffect(() => () => parentRef.current.appendChild(ref.current));
 
     useEffect(
         () => {

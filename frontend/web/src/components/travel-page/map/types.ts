@@ -15,7 +15,7 @@ export interface MapPropsType {
 export interface MapMarkerType {
     latLng: [number, number];
     component: JSX.Element;
-    key: string;
+    key: string | number;
 }
 
 export interface LatLngObjectType {
