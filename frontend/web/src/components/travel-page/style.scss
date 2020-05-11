@@ -1,3 +1,48 @@
+@import '../styles/colours.scss';
+@import '../styles/properties.scss';
+@import '../styles/variables.scss';
+
 main.travel-page {
+    position: relative;
+
     height: calc(100vh - 3rem);
+
+    .back-button {
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template-rows: 0.875rem;
+        grid-template-areas: "icon title";
+        grid-column-gap: 0.25rem;
+        align-items: center;
+
+        position: absolute;
+        top: 0.5rem;
+        left: 0.5rem;
+        padding: 0.5rem;
+
+        background-color: $off-black;
+        border: $one-px solid $dark-grey;
+        z-index: 1;
+        cursor: pointer;
+
+        .icon-image-container {
+            grid-area: icon;
+
+            height: 0.5rem;
+
+            transform: rotate(180deg);
+
+            .icon-image {
+                float: left;
+            }
+        }
+
+        .title {
+            grid-area: title;
+
+            font-size: 0.675rem;
+            text-transform: uppercase;
+            font-weight: $bold;
+        }
+    }
 }
