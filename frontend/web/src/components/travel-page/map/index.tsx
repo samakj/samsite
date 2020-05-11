@@ -1,15 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 import '@samsite/components/travel-page/map/style.scss';
-import { MapMarkerType, MapPropsType } from '@samsite/components/travel-page/map/types';
+import { MapPropsType } from '@samsite/components/travel-page/map/types';
 import { defaultMapStyles } from '@samsite/components/travel-page/map/mapStyle';
 import { isClientSide } from '@samsite/utils/render-side';
 import {
-    fitNewBoundsGenerator,
     initGoogleMapObjectGenerator,
-    loadScriptEffectGenerator,
+    loadScriptEffectGenerator, updateMutatedMarkersGenerator,
 } from '@samsite/components/travel-page/map/effects';
-import { ComponentMarker } from '@samsite/components/travel-page/map/component-marker';
 
 const apiBaseUrl = 'https://maps.googleapis.com/maps/api/js';
 const apiKey = 'AIzaSyCeu7ked2XnDpbUUhJmB3Y4qN_dlZNDEew';
@@ -22,7 +20,6 @@ const Map: React.FunctionComponent<MapPropsType> = ({
     disableDefaultUI,
     backgroundColor,
     mapStyles,
-    bounds,
     markers,
 }) => {
     const [scriptLoaded, updateScriptLoaded] = useState(!!(isClientSide() && window.google && window.google.maps));
@@ -50,34 +47,12 @@ const Map: React.FunctionComponent<MapPropsType> = ({
     );
 
     useEffect(
-        initGoogleMapObjectGenerator(mapContainerRef, bounds, mapOptions, scriptLoaded, updateGoogleMapObject),
+        initGoogleMapObjectGenerator(mapContainerRef, mapOptions, scriptLoaded, updateGoogleMapObject),
         [scriptLoaded],
     );
 
     useEffect(
-        fitNewBoundsGenerator(bounds, googleMapObject),
-        [bounds, googleMapObject],
-    );
-
-    useEffect(
-        () => {
-            if (googleMapObject && markerContainerRef && markers && markers.length) {
-                updateMutatedMarkers(
-                    markers.map(
-                        (marker: MapMarkerType): JSX.Element => (
-                            <ComponentMarker
-                                latLng={marker.latLng}
-                                map={googleMapObject}
-                                parentRef={markerContainerRef}
-                                key={marker.key}
-                            >
-                                { marker.component }
-                            </ComponentMarker>
-                        ),
-                    ),
-                );
-            }
-        },
+        updateMutatedMarkersGenerator(markers, googleMapObject, markerContainerRef, updateMutatedMarkers),
         [googleMapObject && markerContainerRef && markers && markers.length],
     );
 
@@ -101,10 +76,6 @@ Map.defaultProps = {
     disableDefaultUI: true,
     backgroundColor: 'none',
     mapStyles: defaultMapStyles,
-    bounds: [
-        { lat: 70, lng: -180 },
-        { lat: -55, lng: 180 },
-    ],
 };
 
 export { Map };

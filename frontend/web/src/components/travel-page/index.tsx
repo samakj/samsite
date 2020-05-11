@@ -16,16 +16,18 @@ import { AsyncImage } from '@samsite/components/ui/async-image';
 const BackButton: React.FunctionComponent<BackButtonPropsType> = ({ updateFocusedCountry }) => {
     const clickHandler = (): void => updateFocusedCountry(null);
 
-    return <div className="back-button" onClick={clickHandler}>
-        <AsyncImage
-            alt="back"
-            srcProgression={['/static/svg/right-triangle.svg']}
-            containerClass={'icon-image-container'}
-            imageClass={'icon-image'}
-        />
-        <span className="title">Back to country view</span>
-    </div>
-}
+    return (
+        <div className="back-button" onClick={clickHandler}>
+            <AsyncImage
+                alt="back"
+                srcProgression={['/static/svg/right-triangle.svg']}
+                containerClass={'icon-image-container'}
+                imageClass={'icon-image'}
+            />
+            <span className="title">Back to country view</span>
+        </div>
+    );
+};
 
 const DumbTravelPage: React.FunctionComponent<TravelPagePropsType> = ({
     localities,
@@ -33,7 +35,6 @@ const DumbTravelPage: React.FunctionComponent<TravelPagePropsType> = ({
     onFetchTravelLocalities,
     onFetchTravelCountries,
 }) => {
-    const [bounds, updateBounds] = useState(undefined);
     const [markers, updateMarkers] = useState(null);
     const [focusedCountry, updateFocusedCountry] = useState(null);
 
@@ -49,7 +50,6 @@ const DumbTravelPage: React.FunctionComponent<TravelPagePropsType> = ({
             countries,
             localities,
             focusedCountry,
-            updateBounds,
             updateMarkers,
             updateFocusedCountry,
         ),
@@ -64,7 +64,6 @@ const DumbTravelPage: React.FunctionComponent<TravelPagePropsType> = ({
         <main className="travel-page">
             { focusedCountry ? <BackButton updateFocusedCountry={updateFocusedCountry} /> : null }
             <Map
-                bounds={bounds}
                 countries={countries}
                 markers={markers}
             />

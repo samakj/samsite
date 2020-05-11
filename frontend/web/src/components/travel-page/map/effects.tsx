@@ -1,6 +1,6 @@
 import Map = google.maps.Map;
 import React, { RefObject } from 'react';
-import { LatLngObjectType, MapMarkerType } from '@samsite/components/travel-page/map/types';
+import { LatLngLimitsType, MapMarkerType } from '@samsite/components/travel-page/map/types';
 import { ComponentMarker } from '@samsite/components/travel-page/map/component-marker';
 
 export const loadScriptEffectGenerator = (
@@ -20,7 +20,6 @@ export const loadScriptEffectGenerator = (
 
 export const initGoogleMapObjectGenerator = (
     containerRef: RefObject<HTMLDivElement>,
-    initialBounds: [LatLngObjectType, LatLngObjectType],
     mapOptions: google.maps.MapOptions,
     scriptLoaded: boolean,
     updateGoogleMapObject: (value: Map) => void,
@@ -31,34 +30,51 @@ export const initGoogleMapObjectGenerator = (
     }
 };
 
-export const fitNewBoundsGenerator = (
-    bounds: [LatLngObjectType, LatLngObjectType],
-    map: google.maps.Map,
-): () => void => (): void => {
-    if (bounds && map) {
-        map.fitBounds(
-            new google.maps.LatLngBounds(
-                new google.maps.LatLng(bounds[0].lat, bounds[0].lng),
-                new google.maps.LatLng(bounds[1].lat, bounds[1].lng),
-            ),
-        );
-    }
-};
-
-export const createComponentMarkersGenerator = (
+export const updateMutatedMarkersGenerator = (
     markers: MapMarkerType[],
     map: google.maps.Map,
+    parentRef: RefObject<HTMLElement>,
     updateMutatedMarkers: (markers: JSX.Element[]) => void,
 ): () => void => (): void => {
     if (map && markers && markers.length) {
-        updateMutatedMarkers(
-            markers.map(
-                (marker: MapMarkerType): JSX.Element => (
-                    <ComponentMarker latLng={marker.latLng} map={map} key={marker.key}>
+        const mutatedMarkers: JSX.Element[] = [];
+        const limits: LatLngLimitsType = {
+            lat: { min: null, max: null },
+            lng: { min: null, max: null },
+        };
+
+        markers.forEach(
+            (marker: MapMarkerType): void => {
+                if (!limits.lat.min || marker.latLng[0] < limits.lat.min) limits.lat.min = marker.latLng[0];
+                if (!limits.lat.max || marker.latLng[0] > limits.lat.max) limits.lat.max = marker.latLng[0];
+                if (!limits.lng.min || marker.latLng[1] < limits.lng.min) limits.lng.min = marker.latLng[1];
+                if (!limits.lng.max || marker.latLng[1] > limits.lng.max) limits.lng.max = marker.latLng[1];
+
+                mutatedMarkers.push(
+                    <ComponentMarker
+                        latLng={marker.latLng}
+                        map={map}
+                        parentRef={parentRef}
+                        key={marker.key}
+                    >
                         { marker.component }
-                    </ComponentMarker>
-                ),
+                    </ComponentMarker>,
+                );
+            },
+        );
+
+        map.fitBounds(
+            new google.maps.LatLngBounds(
+                new google.maps.LatLng(limits.lat.max, limits.lng.min),
+                new google.maps.LatLng(limits.lat.min, limits.lng.max),
             ),
+        );
+        google.maps.event.addListenerOnce(
+            map,
+            'idle',
+            (): void => {
+                updateMutatedMarkers(mutatedMarkers);
+            },
         );
     }
 };

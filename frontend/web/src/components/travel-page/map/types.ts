@@ -7,7 +7,6 @@ export interface MapPropsType {
     disableDefaultUI?: google.maps.MapOptions["disableDefaultUI"];
     backgroundColor?: google.maps.MapOptions["backgroundColor"];
     mapStyles?: google.maps.MapOptions["styles"];
-    bounds?: [LatLngObjectType, LatLngObjectType];
     countries?: StateObjectType<TravelCountryStateType>;
     markers?: MapMarkerType[];
 }
@@ -21,4 +20,9 @@ export interface MapMarkerType {
 export interface LatLngObjectType {
     lat: number;
     lng: number;
+}
+
+export interface LatLngLimitsType {
+    lat: { min: number, max: number },
+    lng: { min: number, max: number },
 }

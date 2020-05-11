@@ -11,8 +11,3 @@ export interface TravelPagePropsType {
 export interface BackButtonPropsType {
     updateFocusedCountry: (countryCode: string) => void;
 }
-
-export interface LatLngLimitsType {
-    lat: { min: number, max: number },
-    lng: { min: number, max: number },
-}
