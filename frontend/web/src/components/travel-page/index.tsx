@@ -9,7 +9,7 @@ import { bindActionCreators, Dispatch } from 'redux';
 import { fetchTravelLocalities } from '@samsite/fetchers/travel/localities';
 import { fetchTravelCountries } from '@samsite/fetchers/travel/countries';
 import { getAllTravelCountriesSelector } from '@samsite/selectors/travel/countries';
-import { handleCountriesGenerator, handleLocalitiesGenerator } from '@samsite/components/travel-page/effects';
+import { updateMapMarkersGenerator, handleLocalitiesGenerator } from '@samsite/components/travel-page/effects';
 import { getAllTravelLocalitiesGroupedByCountryCodeSelector } from '@samsite/components/travel-page/selectors';
 
 const DumbTravelPage: React.FunctionComponent<TravelPagePropsType> = ({
@@ -20,6 +20,7 @@ const DumbTravelPage: React.FunctionComponent<TravelPagePropsType> = ({
 }) => {
     const [bounds, updateBounds] = useState(undefined);
     const [markers, updateMarkers] = useState(null);
+    const [focusedCountry, updateFocusedCountry] = useState(null);
 
     useEffect(() => { onFetchTravelLocalities(); }, []);
 
@@ -29,8 +30,19 @@ const DumbTravelPage: React.FunctionComponent<TravelPagePropsType> = ({
     );
 
     useEffect(
-        handleCountriesGenerator(countries, updateBounds, updateMarkers),
-        [countries && Object.keys(countries).length],
+        updateMapMarkersGenerator(
+            countries,
+            localities,
+            focusedCountry,
+            updateBounds,
+            updateMarkers,
+            updateFocusedCountry,
+        ),
+        [
+            countries && Object.keys(countries).length,
+            localities && Object.keys(localities).length,
+            focusedCountry,
+        ],
     );
 
     return (

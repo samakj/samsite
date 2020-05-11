@@ -27,13 +27,6 @@ export const initGoogleMapObjectGenerator = (
 ): () => void => (): void => {
     if (scriptLoaded) {
         const googleMapsObject = new window.google.maps.Map(containerRef.current, mapOptions);
-
-        const bounds = new google.maps.LatLngBounds(
-            new google.maps.LatLng(initialBounds[0].lat, initialBounds[0].lng),
-            new google.maps.LatLng(initialBounds[1].lat, initialBounds[1].lng),
-        );
-
-        googleMapsObject.fitBounds(bounds);
         updateGoogleMapObject(googleMapsObject);
     }
 };

@@ -7,3 +7,8 @@ export interface TravelPagePropsType {
     onFetchTravelLocalities: () => void,
     onFetchTravelCountries: (countryCodes: string[]) => void,
 }
+
+export interface LatLngLimitsType {
+    lat: { min: number, max: number },
+    lng: { min: number, max: number },
+}

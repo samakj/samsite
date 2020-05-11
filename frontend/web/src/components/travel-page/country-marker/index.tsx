@@ -4,7 +4,7 @@ import '@samsite/components/travel-page/country-marker/style.scss';
 import { CountryMarkerPropsType } from '@samsite/components/travel-page/country-marker/types';
 import { AsyncImage } from '@samsite/components/ui/async-image';
 
-export const CountryMarker: React.FunctionComponent<CountryMarkerPropsType> = ({ country }) => {
+export const CountryMarker: React.FunctionComponent<CountryMarkerPropsType> = ({ country, updateFocusedCountry }) => {
     const [titleVisible, updateTitleVisible] = useState(false);
 
     const countryTitle = `${country.nativeName}${country.nativeName === country.name ? '' : ` (${country.name})`}`;
@@ -16,11 +16,16 @@ export const CountryMarker: React.FunctionComponent<CountryMarkerPropsType> = ({
         updateTitleVisible(false);
     };
 
+    const clickHandler = (): void => {
+        updateFocusedCountry(country.countryCode);
+    };
+
     return (
         <div
             className={`country-marker ${titleVisible ? '-full' : '-compact'}`}
             onMouseEnter={mouseEnterHandler}
             onMouseLeave={mouseLeaveHandler}
+            onClick={clickHandler}
         >
             <div className="country-title">{ countryTitle }</div>
             <AsyncImage
