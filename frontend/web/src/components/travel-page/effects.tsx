@@ -5,15 +5,11 @@ import { CountryMarker } from '@samsite/components/travel-page/country-marker';
 import React from 'react';
 
 export const handleLocalitiesGenerator = (
-    localities: StateObjectType<TravelLocalityStateType>,
+    localities: StateObjectType<TravelLocalityStateType[]>,
     fetchCountries: (countryCodes: string[]) => void,
 ): () => void => (): void => {
     if (localities && Object.keys(localities).length) {
-        fetchCountries(
-            Object.values(localities).map(
-                (locality: TravelLocalityStateType): string => locality.countryCode,
-            ),
-        );
+        fetchCountries(Object.keys(localities));
     }
 };
 

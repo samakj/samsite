@@ -7,10 +7,10 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { bindActionCreators, Dispatch } from 'redux';
 import { fetchTravelLocalities } from '@samsite/fetchers/travel/localities';
-import { getAllTravelLocalitiesSelector } from '@samsite/selectors/travel/localities';
 import { fetchTravelCountries } from '@samsite/fetchers/travel/countries';
 import { getAllTravelCountriesSelector } from '@samsite/selectors/travel/countries';
 import { handleCountriesGenerator, handleLocalitiesGenerator } from '@samsite/components/travel-page/effects';
+import { getAllTravelLocalitiesGroupedByCountryCodeSelector } from '@samsite/components/travel-page/selectors';
 
 const DumbTravelPage: React.FunctionComponent<TravelPagePropsType> = ({
     localities,
@@ -45,7 +45,7 @@ const DumbTravelPage: React.FunctionComponent<TravelPagePropsType> = ({
 };
 
 const mapStateToProps = createStructuredSelector({
-    localities: getAllTravelLocalitiesSelector,
+    localities: getAllTravelLocalitiesGroupedByCountryCodeSelector,
     countries: getAllTravelCountriesSelector,
 });
 
