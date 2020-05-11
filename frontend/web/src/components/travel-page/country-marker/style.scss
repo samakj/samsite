@@ -39,7 +39,8 @@ $title-size: 8rem;
         grid-area: title;
 
         text-align: center;
-        font-size: #{ $flag-size - 4 * $marker-padding };
+        font-size: 0.875rem;
+        text-transform: uppercase;
         font-weight: $bold;
     }
 }
