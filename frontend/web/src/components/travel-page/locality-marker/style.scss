@@ -15,11 +15,17 @@ $title-size: 8rem;
     overflow: hidden;
     z-index: 1;
     border: $dark-grey solid $one-px;
+    animation: fadeIn forwards 300ms;
 
     .locality-title {
         text-align: center;
         font-size: 0.875rem;
         text-transform: uppercase;
         font-weight: $bold;
+    }
+
+    @keyframes fadeIn {
+        0% {opacity: 0}
+        100% {opacity: 1}
     }
 }
