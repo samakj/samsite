@@ -20,10 +20,9 @@ export const data: ProjectDataType[] = [
         keywords: ['React', 'Javascript', 'Python', 'Flask', 'Postgresql', 'REST'],
         todos: [
             'Add backend service to provide project data.',
-            'Add backend service to provide travel information.',
-            'Add backend service to provide static files.',
+            'Add images backend travel service.',
             'Add admin panel for updating backend data.',
-            'Add travel page with map to display locations and navigate through pictures.',
+            'Add travel images to localities in travel map.',
         ],
     },
     {
