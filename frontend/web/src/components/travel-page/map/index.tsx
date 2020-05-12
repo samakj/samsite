@@ -3,7 +3,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import '@samsite/components/travel-page/map/style.scss';
 import { MapPropsType } from '@samsite/components/travel-page/map/types';
 import { defaultMapStyles } from '@samsite/components/travel-page/map/mapStyle';
-import { isClientSide } from '@samsite/utils/render-side';
 import {
     initGoogleMapObjectGenerator,
     loadScriptEffectGenerator, updateMutatedMarkersGenerator,
@@ -58,9 +57,14 @@ const Map: React.FunctionComponent<MapPropsType> = ({
 
     return (
         <div className="map-outer-container">
-            <div className="map-container" ref={mapContainerRef}>
-                <p>Script load state: { `${scriptLoaded}` }</p>
-            </div>
+            {
+                scriptLoaded instanceof Error ?
+                    <div className="loading-message -error">Error loading Google Maps API.</div> :
+                    <div className={`loading-message -${ scriptLoaded ? 'hide' : 'show' }`}>
+                        Loading Google Maps API...
+                    </div>
+            }
+            <div className="map-container" ref={mapContainerRef} />
             <div className="component-markers" ref={markerContainerRef}>
                 { mutatedMarkers }
             </div>

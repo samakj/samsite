@@ -1,6 +1,40 @@
+@import '../../styles/colours';
+@import '../../styles/properties';
+
 .map-outer-container {
+    position: relative;
+
     height: 100%;
     width: 100%;
+
+    .loading-message {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        z-index: 1;
+        background-color: transparentize($black, 0.2);
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: $bold;
+        font-size: 0.875rem;
+        letter-spacing: 0.0625rem;
+        transition: color 300ms;
+
+        &.-hide {
+            z-index: -1;
+        }
+
+        &.-error {
+            color: $red;
+        }
+    }
 
     .map-container {
         height: 100%;
