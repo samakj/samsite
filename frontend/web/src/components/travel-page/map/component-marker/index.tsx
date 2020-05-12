@@ -17,7 +17,7 @@ export const ComponentMarker: React.FunctionComponent<ComponentMarkerPropsType> 
     const [overlayView, updateOverlayView] = useState(null);
     const ref = useRef(null);
 
-    useEffect(() => () => parentRef.current.appendChild(ref.current));
+    useEffect(() => () => parentRef.current && parentRef.current.appendChild(ref.current));
 
     useEffect(
         () => {
