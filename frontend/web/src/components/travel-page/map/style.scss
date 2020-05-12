@@ -1,5 +1,6 @@
 @import '../../styles/colours';
 @import '../../styles/properties';
+@import '../../styles/variables';
 
 .map-outer-container {
     position: relative;
@@ -34,6 +35,25 @@
         &.-error {
             color: $red;
         }
+    }
+
+    .in-dev-banner {
+        width: 100%;
+        padding: 0.5rem;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background-color: $off-black;
+        border-color: $dark-grey;
+        border-width: $one-px 0;
+        border-style: solid;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: $bold;
+        font-size: 0.75rem;
+        letter-spacing: 0.0625rem;
     }
 
     .map-container {

@@ -64,6 +64,7 @@ const Map: React.FunctionComponent<MapPropsType> = ({
                         Loading Google Maps API...
                     </div>
             }
+            <div className="in-dev-banner">This page is currently still in development...</div>
             <div className="map-container" ref={mapContainerRef} />
             <div className="component-markers" ref={markerContainerRef}>
                 { mutatedMarkers }
