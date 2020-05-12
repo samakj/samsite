@@ -2,17 +2,21 @@ import Map = google.maps.Map;
 import React, { RefObject } from 'react';
 import { LatLngLimitsType, MapMarkerType } from '@samsite/components/travel-page/map/types';
 import { ComponentMarker } from '@samsite/components/travel-page/map/component-marker';
+import { isClientSide } from '@samsite/utils/render-side';
 
 export const loadScriptEffectGenerator = (
     src: string,
     tagId: string,
     scriptLoaded: boolean,
-    updateScriptLoaded: (value: boolean) => void,
+    updateScriptLoaded: (value: boolean | Error) => void,
 ): () => void => (): void => {
-    if (!scriptLoaded && !document.getElementById(tagId)) {
+    if (isClientSide() && window.google && window.google.maps) {
+        updateScriptLoaded(true)
+    } else if (!scriptLoaded && !document.getElementById(tagId)) {
         const tag = document.createElement('script');
         tag.id = tagId;
-        tag.onload = () => updateScriptLoaded(true);
+        tag.onload = (): void => updateScriptLoaded(true);
+        tag.onerror = (): void => updateScriptLoaded(new Error(`Failed to load script at: '${src}'`));
         tag.src = src;
         document.body.appendChild(tag);
     }
@@ -21,10 +25,10 @@ export const loadScriptEffectGenerator = (
 export const initGoogleMapObjectGenerator = (
     containerRef: RefObject<HTMLDivElement>,
     mapOptions: google.maps.MapOptions,
-    scriptLoaded: boolean,
+    scriptLoaded: boolean | Error,
     updateGoogleMapObject: (value: Map) => void,
 ): () => void => (): void => {
-    if (scriptLoaded) {
+    if (scriptLoaded && !(scriptLoaded instanceof Error)) {
         const googleMapsObject = new window.google.maps.Map(containerRef.current, mapOptions);
         updateGoogleMapObject(googleMapsObject);
     }

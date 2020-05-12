@@ -22,7 +22,7 @@ const Map: React.FunctionComponent<MapPropsType> = ({
     mapStyles,
     markers,
 }) => {
-    const [scriptLoaded, updateScriptLoaded] = useState(!!(isClientSide() && window.google && window.google.maps));
+    const [scriptLoaded, updateScriptLoaded] = useState(null);
     const [googleMapObject, updateGoogleMapObject] = useState(null);
     const [mutatedMarkers, updateMutatedMarkers] = useState(null);
 
