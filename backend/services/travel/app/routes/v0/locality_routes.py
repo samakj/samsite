@@ -8,7 +8,7 @@ LOCALITIES_V0_BLUEPRINT = Blueprint(name="v0_localities", import_name=__name__)
 def create_locality() -> JSONResponse:
     request_data = request.get_json()
     return JSONResponse({
-        "locality": current_app.locality_creation_handler.create_locality(
+        "locality": current_app.locality_store.create_locality(
             name=request_data["name"],
             country_code=request_data["country_code"],
             latitude=request_data["latitude"],
