@@ -1,7 +1,7 @@
 const path = require('path');
-const plugins = require('./webpack.plugins');
-const rules = require('./webpack.rules');
-const resolve = require('./webpack.resolve');
+const plugins = require('./webpack/plugins');
+const rules = require('./webpack/rules/prod');
+const resolve = require('./webpack/resolve');
 
 module.exports = [
     // Service Worker
@@ -17,7 +17,7 @@ module.exports = [
             publicPath: '/static/',
         },
         module: {
-            rules: [rules.tsNoLint, rules.jsNoSourceMap],
+            rules: [rules.ts, rules.js],
         },
         stats: {
             children: false,
@@ -39,7 +39,7 @@ module.exports = [
         },
         plugins: [plugins.MiniExtractCss],
         module: {
-            rules: [rules.tsNoLint, rules.jsNoSourceMap, rules.scss],
+            rules: [rules.ts, rules.js, rules.scss],
         },
         stats: {
             children: false,
@@ -59,7 +59,7 @@ module.exports = [
         },
         plugins: [...plugins.HtmlWebpackPlugin, plugins.MiniExtractCss, plugins.CopyStatic, plugins.DotEnv],
         module: {
-            rules: [rules.tsNoLint, rules.jsNoSourceMap, rules.scss],
+            rules: [rules.ts, rules.js, rules.scss],
         },
         entry: [path.join(__dirname, 'src', 'client.tsx')],
         target: 'web',

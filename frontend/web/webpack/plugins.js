@@ -2,8 +2,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MCEP = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const DotEnv = require('dotenv-webpack');
-const templateParameters = require('./src/page-templates/template-parameters');
-const routeTemplates = require('./src/page-templates/route-templates');
+const templateParameters = require('../src/page-templates/template-parameters');
+const routeTemplates = require('../src/page-templates/route-templates');
 
 const generateHtmlWebpackPlugins = () => {
     return Object.entries(routeTemplates).reduce(

@@ -1,7 +1,7 @@
 const path = require('path');
-const plugins = require('./webpack.plugins');
-const rules = require('./webpack.rules');
-const resolve = require('./webpack.resolve');
+const plugins = require('./webpack/plugins');
+const rules = require('./webpack/rules/dev');
+const resolve = require('./webpack/resolve');
 
 module.exports = [
     // Service Worker
