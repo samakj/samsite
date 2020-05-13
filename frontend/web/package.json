@@ -8,7 +8,8 @@
         "build:prod": "webpack --config ./webpack.prod.js",
         "build:watch": "webpack --config ./webpack.dev.js --watch",
         "start:server": "nodemon --watch ./public/js/server.bundle.js ./public/js/server.bundle.js",
-        "start:dev": "parallelshell 'npm run build:watch' 'npm run start:server'"
+        "start:dev": "parallelshell 'npm run build:watch' 'npm run start:server'",
+        "push": "source ./scripts/push-to-aws.sh"
     },
     "author": "Sam Jones",
     "license": "ISC",
