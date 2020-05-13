@@ -4,9 +4,11 @@
     "description": "A personal website for Sam Jones.",
     "main": "src/index.ts",
     "scripts": {
-        "build": "webpack --config ./webpack.config.js",
-        "build:watch": "webpack --config ./webpack.config.js --watch",
-        "start:dev": "parallelshell 'npm run build:watch' 'nodemon --watch ./public/js/server.bundle.js ./public/js/server.bundle.js'"
+        "build:dev": "webpack --config ./webpack.dev.js",
+        "build:prod": "webpack --config ./webpack.prod.js",
+        "build:watch": "webpack --config ./webpack.dev.js --watch",
+        "start:server": "nodemon --watch ./public/js/server.bundle.js ./public/js/server.bundle.js",
+        "start:dev": "parallelshell 'npm run build:watch' 'npm run start:server'"
     },
     "author": "Sam Jones",
     "license": "ISC",
