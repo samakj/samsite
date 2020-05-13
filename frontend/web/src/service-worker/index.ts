@@ -65,6 +65,9 @@ const getCurrentCache = (): Promise<Cache> => caches
     .keys()
     .then(
         (cacheNames: string[]): string => {
+            const currentTimestamp: number = + new Date();
+            let latestCacheTimestamp: number = null;
+
             for (const cacheName of cacheNames) {
                 if (cacheName.indexOf(CACHE_FULL_NAME) == 0) {
                     const cacheOpened = parseInt(
@@ -72,13 +75,16 @@ const getCurrentCache = (): Promise<Cache> => caches
                         10,
                     );
 
-                    if (+ new Date() - cacheOpened < CACHE_EXPIRY) {
-                        return cacheName
+                    if (!latestCacheTimestamp || latestCacheTimestamp < cacheOpened ) {
+                        latestCacheTimestamp = cacheOpened;
                     }
                 }
             }
 
-            return `${CACHE_FULL_NAME}@${+ new Date()}`
+            return (
+                `${CACHE_FULL_NAME}@` +
+                `${currentTimestamp - latestCacheTimestamp < CACHE_EXPIRY ? latestCacheTimestamp : + new Date()}`
+            )
         },
     )
     .then((currentCache: string): Promise<Cache> => caches.open(currentCache));
