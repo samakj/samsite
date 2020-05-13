@@ -15,6 +15,16 @@ module.exports = {
         include: path.join(__dirname, 'src'),
         exclude: /node_modules/,
     },
+    tsNoLint: {
+        test: /\.tsx?$/,
+        use: [
+            {
+                loader: 'awesome-typescript-loader',
+            },
+        ],
+        include: path.join(__dirname, 'src'),
+        exclude: /node_modules/,
+    },
     js: {
         test: /\.jsx?$/,
         use: [
@@ -26,6 +36,19 @@ module.exports = {
             },
             {
                 loader: 'source-map-loader',
+            },
+        ],
+        include: path.join(__dirname, 'src'),
+        exclude: /node_modules/,
+    },
+    jsNoSourceMap: {
+        test: /\.jsx?$/,
+        use: [
+            {
+                loader: 'babel-loader',
+                options: {
+                    presets: ['@babel/preset-env'],
+                },
             },
         ],
         include: path.join(__dirname, 'src'),
