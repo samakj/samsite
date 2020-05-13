@@ -6,6 +6,11 @@ $marker-padding: 0.25rem;
 $flag-size: 2rem;
 $title-size: 8rem;
 
+:export {
+    height: #{$flag-size + 2 * $marker-padding};
+    width: #{$flag-size + 2 * $marker-padding};
+}
+
 .country-marker {
     position: relative;
     width: #{$flag-size + 2 * $marker-padding};

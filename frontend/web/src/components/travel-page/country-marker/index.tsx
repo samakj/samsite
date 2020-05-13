@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
 
-import '@samsite/components/travel-page/country-marker/style.scss';
+// @ts-ignore: Typescript doesnt recognise scss :export
+import styles from '@samsite/components/travel-page/country-marker/style.scss';
 import { CountryMarkerPropsType } from '@samsite/components/travel-page/country-marker/types';
 import { AsyncImage } from '@samsite/components/ui/async-image';
+import { cssDimensionToPixels } from '@samsite/utils/css-dimensions-to-pixels';
+
+export const boundingBoxDimensions = {
+    height: cssDimensionToPixels(styles.height),
+    width: cssDimensionToPixels(styles.width),
+};
 
 export const CountryMarker: React.FunctionComponent<CountryMarkerPropsType> = ({ country, updateFocusedCountry }) => {
     const [titleVisible, updateTitleVisible] = useState(false);
