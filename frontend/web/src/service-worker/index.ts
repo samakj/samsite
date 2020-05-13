@@ -44,24 +44,22 @@ self.addEventListener('fetch', (event: FetchEvent): void => {
 const cleanCaches = (): Promise<void> => caches
     .keys()
     .then(
-        (cacheNames: string[]): void => {
-            for (const cacheName of cacheNames) {
-                if (cacheName.indexOf(CACHE_FULL_NAME) == 0) {
-                    const cacheOpened = parseInt(
-                        cacheName.replace(`${CACHE_FULL_NAME}@`, ''),
-                        10,
-                    );
-
-                    if (+ new Date() - cacheOpened > CACHE_EXPIRY) {
-                        console.log(`Deleting old cache '${cacheName}'.`);
-                        caches.delete(cacheName)
+        (cacheNames: string[]): Promise<void> => {
+            return getCurrentCacheName()
+                .then(
+                    (currentCacheName: string): void => {
+                        for (const cacheName of cacheNames) {
+                            if (cacheName.indexOf(CACHE_FULL_NAME) == 0 && cacheName !== currentCacheName) {
+                                console.log(`Deleting old cache '${cacheName}'.`);
+                                caches.delete(cacheName)
+                            }
+                        }
                     }
-                }
-            }
+                );
         },
     );
 
-const getCurrentCache = (): Promise<Cache> => caches
+const getCurrentCacheName = (): Promise<string> => caches
     .keys()
     .then(
         (cacheNames: string[]): string => {
@@ -86,7 +84,9 @@ const getCurrentCache = (): Promise<Cache> => caches
                 `${currentTimestamp - latestCacheTimestamp < CACHE_EXPIRY ? latestCacheTimestamp : + new Date()}`
             )
         },
-    )
+    );
+
+const getCurrentCache = (): Promise<Cache> => getCurrentCacheName()
     .then((currentCache: string): Promise<Cache> => caches.open(currentCache));
 
 const isInDontCache = (url: string): boolean => {
