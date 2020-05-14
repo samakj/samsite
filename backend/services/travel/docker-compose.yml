@@ -17,7 +17,7 @@ services:
       - LANG=${LANG}
       - VIRTUAL_PORT=${SERVICE_PORT}
     ports:
-      - "127.0.0.1:${SERVICE_PORT}:${SERVICE_PORT}"
+      - "0.0.0.0:${SERVICE_PORT}:${SERVICE_PORT}"
     links:
       - travel_db
   travel_db:
