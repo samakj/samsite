@@ -17,9 +17,9 @@ def whitelist(
             _ips = ips or set()
 
             if internal:
-                ips.add(
-                    socket.gethostbyname(socket.gethostname())
-                )
+                host_ip = socket.gethostbyname(socket.gethostname())
+                _ips.add("172.21.0.1" if host_ip.startswith("172.") else host_ip)
+
             if request.remote_addr not in _ips:
                 raise APIError(403, "FORBIDDEN")
 

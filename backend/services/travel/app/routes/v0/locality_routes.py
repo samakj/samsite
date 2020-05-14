@@ -1,10 +1,12 @@
 from flask import Blueprint, current_app, request
 from samsite_flask.responses import JSONResponse
+from samsite_flask.decorators import whitelist
 
 LOCALITIES_V0_BLUEPRINT = Blueprint(name="v0_localities", import_name=__name__)
 
 
 @LOCALITIES_V0_BLUEPRINT.route("/localities/", methods=["POST"])
+@whitelist(internal=True)
 def create_locality() -> JSONResponse:
     request_data = request.get_json()
     return JSONResponse({
@@ -43,6 +45,7 @@ def get_localities() -> JSONResponse:
 
 
 @LOCALITIES_V0_BLUEPRINT.route("/localities/<int:locality_id>/", methods=["PATCH"])
+@whitelist(internal=True)
 def update_locality(locality_id: int) -> JSONResponse:
     request_data = request.get_json()
     return JSONResponse({
@@ -58,6 +61,7 @@ def update_locality(locality_id: int) -> JSONResponse:
 
 
 @LOCALITIES_V0_BLUEPRINT.route("/localities/<int:locality_id>/", methods=["DELETE"])
+@whitelist(internal=True)
 def delete_locality(locality_id: int) -> JSONResponse:
     return JSONResponse({
         "locality_id": current_app.locality_creation_handler.delete_locality(
@@ -67,10 +71,12 @@ def delete_locality(locality_id: int) -> JSONResponse:
 
 
 @LOCALITIES_V0_BLUEPRINT.route("/localities/backup/", methods=["POST"])
+@whitelist(internal=True)
 def backup_localities() -> JSONResponse:
     return JSONResponse({"success": current_app.locality_store.backup_localities()})
 
 
 @LOCALITIES_V0_BLUEPRINT.route("/localities/load/", methods=["POST"])
+@whitelist(internal=True)
 def load_localities() -> JSONResponse:
     return JSONResponse({"success": current_app.locality_store.load_localities_from_backup()})
